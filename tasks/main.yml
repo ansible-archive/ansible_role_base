@@ -1,55 +1,52 @@
 ---
-
-- name: Install some common base packages
+---
+- name: Install common base packages
   apt:
-    state: 'latest'
-    name: "{{ packages }}"
+    package:
+      - tmux
+      - sudo
+      - molly-guard
+      - htop
+      - iftop
+      - iotop
+      - sysstat
+      - ethtool
+      - ethstatus
+      - nethogs
+      - nload
+      - ncdu
+      - mtr-tiny
+      - knot-dnsutils
+      - atop
+      - vim
+      - nmap
+      - python3
+      - wget
+      - git
+      - bash-completion
+      - unzip
+      - python3-pip 
+      #- rng-tools
+    state: latest
     update_cache: yes
-    cache_valid_time: 86400
-  vars:
-    packages:
-    - tmux
-    - aptitude
-    - htop
-    - iftop
-    - iotop
-    - molly-guard
-    - ethtool
-    - ethstatus
-    - nano
-    - ncdu
-    - haveged
-    - nmap
-    - vim
-    - fail2ban
-    - python3
-    - python3-jsonschema
-    - python3-yaml
-    - python3-requests
-    - python3-prettytable
-    - python3-jinja2
-    - python3-natsort
-    - jq
-    - git
-    - perl
-    - wget
-    - mtr-tiny
-    - bash-completion
-    - unzip
-    - python3-pip 
+    cache_valid_time: 43200
 
 - name: Install some common Debian specific packages
   apt:
-    name: '{{ packages }}'
+    package:
+      - debian-goodies
+      - apt-dater-host
     state: latest
     update_cache: yes
-    cache_valid_time: 86400
-  vars:
-    packages:
-    - debian-goodies
-    - apt-dater-host
+    cache_valid_time: 43200
   when: ansible_distribution == 'Debian'
 
-- name: Update all packages to the latest version
+
+- name: Remove rpcbind, nfs-common
   apt:
-    upgrade: safe
+    pkg:
+      - rpcbind
+      - nfs-common
+    state: absent
+
+
