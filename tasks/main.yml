@@ -1,34 +1,36 @@
 ---
-- name: Install common base packages
+
+- name: Install common base packages [Debian]
   apt:
-    package:
-      - tmux
-      - sudo
-      - molly-guard
-      - htop
-      - iftop
-      - iotop
-      - sysstat
-      - ethtool
-      - ethstatus
-      - nethogs
-      - nload
-      - ncdu
-      - mtr-tiny
-      - knot-dnsutils
-      - atop
-      - vim
-      - nmap
-      - python3
-      - wget
-      - git
-      - bash-completion
-      - unzip
-      - python3-pip 
-      #- rng-tools
+    package: "{{ base_packages }}"
     state: latest
     update_cache: yes
     cache_valid_time: 43200
+  when:
+    ansible_distribution == 'Debian'
+
+- name: Install common base packages [Debian]
+  apt:
+    package: "{{ debian_packages }}"
+    state: latest
+    update_cache: yes
+    cache_valid_time: 43200
+  when:
+    ansible_distribution == 'Debian'
+
+- name: Install common base packages [Fedora]
+  package:
+    name: "{{ base_packages }}"
+    state: latest
+  when:
+    ansible_distribution != 'Debian'
+
+- name: Install common base packages [Fedora]
+  package:
+    name: "{{ fedora_packages }}"
+    state: latest
+  when:
+    ansible_distribution != 'Debian'
 
 - name: Install some common Debian specific packages
   apt:
@@ -42,8 +44,8 @@
 
 
 - name: Remove rpcbind, nfs-common
-  apt:
-    pkg:
+  package:
+    name:
       - rpcbind
       - nfs-common
     state: absent

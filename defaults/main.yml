@@ -1,0 +1,32 @@
+---
+base_packages:
+  - tmux
+  - sudo
+  - htop
+  - iftop
+  - iotop
+  - sysstat
+  - ethtool
+  - ethstatus
+  - nethogs
+  - nload
+  - ncdu
+  - atop
+  - vim
+  - nmap
+  - python3
+  - wget
+  - git
+  - bash-completion
+  - unzip
+  - python3-pip 
+  #- rng-tools
+
+debian_packages: 
+  - molly-guard
+  - mtr-tiny
+  - knot-dnsutils
+
+fedora_packages:
+  - mtr
+
