@@ -1,13 +1,14 @@
 ---
 
 - name: Install common base packages [Debian]
+  become: yes
   apt:
     package: "{{ base_packages }}"
     state: latest
     update_cache: yes
     cache_valid_time: 43200
   when:
-    ansible_distribution == 'Debian'
+    - ansible_distribution == 'Debian'
 
 - name: Install common base packages [Debian]
   apt:
@@ -37,6 +38,7 @@
     package:
       - debian-goodies
       - apt-dater-host
+      - apt-transport-https
     state: latest
     update_cache: yes
     cache_valid_time: 43200

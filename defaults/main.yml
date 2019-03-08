@@ -20,7 +20,9 @@ base_packages:
   - bash-completion
   - unzip
   - python3-pip 
-  #- rng-tools
+  - asciinema
+  - ranger
+  - net-tools
 
 debian_packages: 
   - molly-guard
@@ -30,3 +32,4 @@ debian_packages:
 fedora_packages:
   - mtr
   - libselinux-python
+
