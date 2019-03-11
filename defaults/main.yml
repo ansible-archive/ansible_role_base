@@ -23,6 +23,7 @@ base_packages:
   - asciinema
   - ranger
   - net-tools
+  - links
 
 debian_packages: 
   - molly-guard
