@@ -20,7 +20,7 @@
   when:
     ansible_distribution == 'Debian'
 
-- name: Install common base packages [Fedora]
+- name: Install common base packages [all]
   become: yes
   package:
     name: "{{ base_packages }}"
@@ -34,7 +34,7 @@
     name: "{{ fedora_packages }}"
     state: latest
   when:
-    ansible_distribution != 'Debian'
+    ansible_distribution == 'Fedora'
 
 - name: Install some common Debian specific packages
   become: yes
