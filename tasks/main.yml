@@ -18,7 +18,7 @@
     update_cache: yes
     cache_valid_time: 43200
   when:
-    ansible_distribution == 'Debian'
+    ansible_os_family == 'Debian'
 
 - name: Install common base packages [all]
   become: yes
