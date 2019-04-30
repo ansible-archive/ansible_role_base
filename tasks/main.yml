@@ -4,7 +4,7 @@
   become: yes
   apt:
     package: "{{ base_packages }}"
-    state: latest
+    state: present
     update_cache: yes
     cache_valid_time: 43200
   when:
@@ -14,7 +14,7 @@
   become: yes
   apt:
     package: "{{ debian_packages }}"
-    state: latest
+    state: present
     update_cache: yes
     cache_valid_time: 43200
   when:
@@ -24,7 +24,7 @@
   become: yes
   package:
     name: "{{ base_packages }}"
-    state: latest
+    state: present
   when:
     ansible_distribution != 'Debian'
 
@@ -32,7 +32,7 @@
   become: yes
   package:
     name: "{{ fedora_packages }}"
-    state: latest
+    state: present
   when:
     ansible_distribution == 'Fedora'
 
@@ -43,11 +43,10 @@
       - debian-goodies
       - apt-dater-host
       - apt-transport-https
-    state: latest
+    state: present
     update_cache: yes
     cache_valid_time: 43200
   when: ansible_distribution == 'Debian'
-
 
 - name: Remove rpcbind, nfs-common
   become: yes
@@ -57,4 +56,18 @@
       - nfs-common
     state: absent
 
+- name: APTITUDE is required
+  become: yes
+  package:
+    name:
+      - aptitude
+    state: present
+  when: ansible_os_family == 'Debian'
 
+- name: Upgrade all packages to latest
+  become: true
+  package:
+    name: "*"
+    state: latest
+  when:
+    - upgrade_packages_to_latest_version

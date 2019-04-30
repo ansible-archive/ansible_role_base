@@ -34,3 +34,4 @@ fedora_packages:
   - mtr
   - libselinux-python
 
+upgrade_packages_to_latest_version: false
