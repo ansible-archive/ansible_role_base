@@ -1,0 +1,3 @@
+---
+playbook_version_number: 100
+playbook_version_path: '/etc/ansible-version/base-packages_ffbsee_github.version' 

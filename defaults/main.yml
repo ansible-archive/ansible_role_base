@@ -35,3 +35,4 @@ fedora_packages:
   - libselinux-python
 
 upgrade_packages_to_latest_version: false
+submodules_versioncheck: true
