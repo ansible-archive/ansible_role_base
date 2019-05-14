@@ -81,6 +81,16 @@
     cache_valid_time: 43200
   when: ansible_distribution == 'Debian'
 
+- name: Install extra packages
+  become: true
+  package:
+    name: "{{ packages_extra }}"
+    state: present
+  when:
+    - packages_extra is defined
+    - packages_extra != ""
+    - packages_extra != '[]'
+
 - name: Remove rpcbind, nfs-common
   become: yes
   package:

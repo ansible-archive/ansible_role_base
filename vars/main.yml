@@ -1,3 +1,38 @@
 ---
-playbook_version_number: 100
+base_packages:
+  - tmux
+  - sudo
+  - htop
+  - iftop
+  - iotop
+  - sysstat
+  - ethtool
+  - ethstatus
+  - nethogs
+  - nload
+  - ncdu
+  - atop
+  - vim
+  - nmap
+  - python3
+  - wget
+  - git
+  - bash-completion
+  - unzip
+  - python3-pip 
+  - asciinema
+  - ranger
+  - net-tools
+  - links
+
+debian_packages: 
+  - molly-guard
+  - mtr-tiny
+  - knot-dnsutils
+
+fedora_packages:
+  - mtr
+  - libselinux-python
+
+playbook_version_number: 101
 playbook_version_path: '/etc/ansible-version/base-packages_ffbsee_github.version' 
