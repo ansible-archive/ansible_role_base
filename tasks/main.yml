@@ -5,20 +5,20 @@
     path: '/etc/ansible-version'
     state: directory
     mode: 0755
-  when: submodules_versioncheck
+  when: submodules_versioncheck|bool
 
 - name: check playbook version
   become: true
   slurp:
     src: "{{ playbook_version_path }}"
   register: playbook_version 
-  when: submodules_versioncheck
+  when: submodules_versioncheck|bool
   ignore_errors: yes
 
 - name: Print version
   debug:
     msg: "Remote playbook version: '{{ playbook_version.content | default('Y3VycmVudGx5IG5vdCBkZXBsb3llZAo=') | b64decode | string }}'. Local playbook version: '{{ playbook_version_number|string }}'."
-  when: submodules_versioncheck
+  when: submodules_versioncheck|bool
 
 - name: Check if your version is outdated
   fail:
@@ -31,7 +31,7 @@
   copy:
     content: "{{ playbook_version_number }}"
     dest: "{{ playbook_version_path }}"
-  when: submodules_versioncheck
+  when: submodules_versioncheck|bool
 
 - name: Install common base packages [Debian]
   become: yes
@@ -113,4 +113,4 @@
     name: "*"
     state: latest
   when:
-    - upgrade_packages_to_latest_version
+    - upgrade_packages_to_latest_version|bool
