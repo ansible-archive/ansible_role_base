@@ -29,6 +29,7 @@ debian_packages:
   - molly-guard
   - mtr-tiny
   - knot-dnsutils
+  - aptitude
 
 fedora_packages:
   - mtr

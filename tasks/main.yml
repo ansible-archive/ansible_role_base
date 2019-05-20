@@ -98,14 +98,6 @@
       - nfs-common
     state: absent
 
-- name: APTITUDE is required
-  become: yes
-  package:
-    name:
-      - aptitude
-    state: present
-  when: ansible_os_family == 'Debian'
-
 - name: Upgrade all packages to latest
   become: true
   package:
