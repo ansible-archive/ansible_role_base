@@ -11,7 +11,7 @@
   become: true
   slurp:
     src: "{{ playbook_version_path }}"
-  register: playbook_version 
+  register: playbook_version
   when: submodules_versioncheck|bool
   ignore_errors: yes
 
@@ -24,7 +24,7 @@
   fail:
     msg: "Your current ansible module has the version '{{ playbook_version_number }}' and is outdated. Please update it at least to version '{{ playbook_version.content | default('Y3VycmVudGx5IG5vdCBkZXBsb3llZAo=') | b64decode }}'!"
   when: 
-    - playbook_version.content|default("Mgo=")|b64decode|int - 1 >= playbook_version_number|int and submodules_versioncheck 
+    - playbook_version.content|default("Mgo=")|b64decode|int - 1 >= playbook_version_number|int and submodules_versioncheck
 
 - name: write new version to remote disk
   become: true
@@ -88,7 +88,6 @@
     state: present
   when:
     - packages_extra is defined
-    - packages_extra != ""
     - packages_extra != '[]'
 
 - name: Remove rpcbind, nfs-common
