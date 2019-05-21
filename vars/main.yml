@@ -30,6 +30,7 @@ debian_packages:
   - mtr-tiny
   - knot-dnsutils
   - aptitude
+  - python-apt
 
 fedora_packages:
   - mtr
