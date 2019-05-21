@@ -31,6 +31,7 @@ debian_packages:
   - knot-dnsutils
   - aptitude
   - python-apt
+  - python3-apt
 
 fedora_packages:
   - mtr
