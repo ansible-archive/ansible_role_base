@@ -14,7 +14,7 @@
   register: playbook_version
   when: submodules_versioncheck|bool
   ignore_errors: yes
-  changed_when: false
+  failed_when: false
 
 - name: Print remote role version
   debug:

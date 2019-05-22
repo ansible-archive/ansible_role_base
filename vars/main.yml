@@ -37,5 +37,5 @@ fedora_packages:
   - mtr
   - libselinux-python
 
-playbook_version_number: 102
+playbook_version_number: 103
 playbook_version_path: '/etc/ansible-version/base-packages_ffbsee_github.version' 
