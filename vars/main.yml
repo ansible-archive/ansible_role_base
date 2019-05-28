@@ -32,6 +32,7 @@ debian_packages:
   - aptitude
   - python-apt
   - python3-apt
+  - fio
 
 fedora_packages:
   - mtr
