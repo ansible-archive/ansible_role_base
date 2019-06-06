@@ -19,7 +19,6 @@ base_packages:
   - bash-completion
   - unzip
   - asciinema
-  - ranger
   - net-tools
   - links
 
@@ -31,14 +30,18 @@ debian_packages:
   - python-apt
   - python3-apt
   - fio
+
+packages_for_all_except_rhel:
+  - ranger
   - python3-pip 
   - python3
 
 fedora_packages:
   - mtr
+  - libselinux-python
+  - ranger
   - python3-pip 
   - python3
-  - libselinux-python
 
-playbook_version_number: 104
+playbook_version_number: 105
 playbook_version_path: '/etc/ansible-version/base-packages_ffbsee_github.version' 

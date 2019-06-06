@@ -50,6 +50,13 @@
     cache_valid_time: 43200
   when: ansible_distribution == 'Debian'
 
+- name: install packages for everyone except centos/rhel
+  become: true
+  package:
+    name: "{{ packages_for_all_except_rhel }}"
+    state: present
+  when: ansible_os_family != 'RedHat'
+
 - name: Install extra packages
   become: true
   package:
