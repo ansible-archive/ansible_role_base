@@ -6,8 +6,10 @@ It should work on the most linux operating systems. Maybe it need some minor adj
 
 If this is so, please create a pull request or at least creat an issue with what is broken!
 
-### Attention:
-only testet with debian9 and fedora29.
+### Testing:
+This role was initial written for ``Debian 9`` and ``Fedora 29``.
+In Spring 2019 it was only used on ``Debian 9``, ``Ubuntu 18.04 LTS`` and ``Ubuntu 19.4``. No ``RHEL`` based Systems anymore.
+In Spring 2019 it was used on ``Debian 9``, ``Ubuntu 18.04 LTS``, ``Ubuntu 19.4`` and ``centos 7``.
 
  variables
 -----------
@@ -20,3 +22,12 @@ You can configure your own packages via host- or group-vars to change what packa
 
 have fun! And don't be evil!
 
+### Protip:
+Packages are defined as variable in the ``vars`` Folder.
+
+ Open tasks
+------------
+- Some CI-Testing would be nice. Eg with docker and some common linux distributions.
+- Meta File for Ansible Galaxy is missing
+- Role should be moved to [chaos-bodensee](https://github.com/chaos-bodensee/)
+- Lint checks?
