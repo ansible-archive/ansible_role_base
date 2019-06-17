@@ -2,22 +2,14 @@
 base_packages:
   - tmux
   - sudo
-  - iftop
-  - iotop
   - sysstat
   - ethtool
-  - ethstatus
-  - nethogs
-  - nload
-  - ncdu
-  - atop
   - vim
   - nmap
   - wget
   - git
   - bash-completion
   - unzip
-  - asciinema
   - net-tools
   - links
 
@@ -35,6 +27,14 @@ packages_for_all_except_rhel:
   - python3-pip 
   - python3
   - htop
+  - iotop
+  - iftop
+  - ethstatus
+  - nethogs
+  - nload
+  - ncdu
+  - atop
+  - asciinema
 
 fedora_packages:
   - mtr
@@ -43,5 +43,5 @@ fedora_packages:
   - python3-pip 
   - python3
 
-playbook_version_number: 8951 # should be over ninethousand
+playbook_version_number: 8952 # should be over ninethousand
 playbook_version_path: '/etc/ansible-version/base-packages_ffbsee_or_chaos-bodensee_github.version' 
