@@ -5,16 +5,6 @@
 - name: Install common base packages [Debian]
   become: yes
   apt:
-    package: "{{ base_packages }}"
-    state: present
-    update_cache: yes
-    cache_valid_time: 43200
-  when:
-    - ansible_distribution == 'Debian'
-
-- name: Install common base packages [Debian]
-  become: yes
-  apt:
     package: "{{ debian_packages }}"
     state: present
     update_cache: yes
@@ -27,8 +17,6 @@
   package:
     name: "{{ base_packages }}"
     state: present
-  when:
-    ansible_distribution != 'Debian'
 
 - name: Install common base packages [Fedora]
   become: yes
