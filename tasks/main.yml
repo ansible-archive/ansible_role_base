@@ -1,6 +1,9 @@
 ---
 - include_tasks: versioncheck.yml
-  when: submodules_versioncheck|bool
+  when: submodules_versioncheck | bool
+
+- include_tasks: editor.yml
+  when: editor_is_vim | bool
 
 - name: Install common base packages [Debian]
   become: yes
