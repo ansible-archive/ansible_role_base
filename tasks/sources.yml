@@ -1,0 +1,11 @@
+---
+- name: add etz apt
+  become: true
+  apt_repository:
+    repo: deb https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main
+    state: present
+  when:
+    - add_ethz | bool
+    - ansible_distribution == 'Debian'
+    - ansible_distribution_release == "wheezy" or ansible_distribution_release == "buster"
+

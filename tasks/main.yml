@@ -5,6 +5,9 @@
 - include_tasks: editor.yml
   when: editor_is_vim | bool
 
+- include_tasks: sources.yml
+  when: add_ethz | bool
+
 - name: Install common base packages [Debian]
   become: yes
   apt:
