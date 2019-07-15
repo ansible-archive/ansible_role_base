@@ -2,6 +2,7 @@
 base_packages:
   - tmux
   - sudo
+  - fail2ban
   - sysstat
   - ethtool
   - vim
@@ -21,6 +22,9 @@ debian_packages:
   - python-apt
   - python3-apt
   - fio
+  - debian-goodies
+  - apt-dater-host
+  - apt-transport-https
 
 packages_for_all_except_rhel:
   - ranger
@@ -43,5 +47,5 @@ fedora_packages:
   - python3-pip 
   - python3
 
-playbook_version_number: 8953 # should be over ninethousand
+playbook_version_number: 8954 # should be over ninethousand
 playbook_version_path: '/etc/ansible-version/base-packages_ffbsee_or_chaos-bodensee_github.version' 
