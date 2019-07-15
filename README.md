@@ -29,5 +29,4 @@ Packages are defined as variable in the ``vars`` Folder.
 ------------
 - Some CI-Testing would be nice. Eg with docker and some common linux distributions.
 - Meta File for Ansible Galaxy is missing
-- Role should be moved to [chaos-bodensee](https://github.com/chaos-bodensee/)
 - Lint checks?
