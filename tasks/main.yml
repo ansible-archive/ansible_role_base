@@ -2,9 +2,6 @@
 - include_tasks: versioncheck.yml
   when: submodules_versioncheck | bool
 
-- include_tasks: editor.yml
-  when: editor_is_vim | bool
-
 - include_tasks: sources.yml
   when: ansible_distribution == 'Debian'
 
@@ -66,3 +63,6 @@
     state: latest
   when:
     - upgrade_packages_to_latest_version|bool
+
+- include_tasks: editor.yml
+  when: editor_is_vim | bool
