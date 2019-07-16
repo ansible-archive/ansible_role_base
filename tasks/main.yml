@@ -1,6 +1,12 @@
 ---
 - include_tasks: versioncheck.yml
-  when: submodules_versioncheck|bool
+  when: submodules_versioncheck | bool
+
+- include_tasks: editor.yml
+  when: editor_is_vim | bool
+
+- include_tasks: sources.yml
+  when: ansible_distribution == 'Debian'
 
 - name: Install common base packages [Debian]
   become: yes
@@ -25,18 +31,6 @@
     state: present
   when:
     ansible_distribution == 'Fedora'
-
-- name: Install some common Debian specific packages
-  become: yes
-  apt:
-    package:
-      - debian-goodies
-      - apt-dater-host
-      - apt-transport-https
-    state: present
-    update_cache: yes
-    cache_valid_time: 43200
-  when: ansible_distribution == 'Debian'
 
 - name: install packages for everyone except centos/rhel
   become: true

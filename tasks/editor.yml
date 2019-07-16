@@ -1,0 +1,7 @@
+---
+- name: vim is our editor
+  become: true
+  alternatives:
+    name: editor
+    path: /usr/bin/vim.basic
+  when: editor_is_vim | bool

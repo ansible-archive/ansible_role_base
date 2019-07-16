@@ -1,0 +1,32 @@
+---
+- name: Install some common Debian specific packages
+  become: yes
+  apt:
+    package:
+      - debian-goodies
+      - apt-dater-host
+      - apt-transport-https
+    state: present
+    update_cache: yes
+    cache_valid_time: 43200
+  when: ansible_distribution == 'Debian'
+
+
+- name: add eth zurich apt
+  become: true
+  apt_repository:
+    repo: deb https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main
+    state: present
+  when:
+    - add_ethz | bool
+    - ansible_distribution == 'Debian'
+    - ansible_distribution_release == "wheezy" or ansible_distribution_release == "buster"
+
+- name: iremove eth zurich apt
+  become: true
+  apt_repository:
+    repo: deb-src https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main
+    state: absent
+  when:
+    - not add_ethz | bool
+    - ansible_distribution == 'Debian'
