@@ -1,0 +1,4 @@
+---
+ - name: Print OS Infos
+   debug:
+      msg: "   ansible_os_family = '{{ ansible_os_family }}'\n   ansible_distribution = '{{ ansible_distribution }}'\n\n\n   ansible_hostname = '{{ ansible_hostname }}'\n   ansible_fqdn = '{{ ansible_fqdn }}'\n"

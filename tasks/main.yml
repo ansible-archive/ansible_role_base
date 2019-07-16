@@ -1,4 +1,7 @@
 ---
+- include_tasks: os_info.yml
+  when: print_os_vars | bool
+
 - include_tasks: versioncheck.yml
   when: submodules_versioncheck | bool
 

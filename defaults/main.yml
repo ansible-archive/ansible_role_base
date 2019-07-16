@@ -13,6 +13,8 @@ add_ethz: true
 # we use vim!
 editor_is_vim: true
 
+# print os variables
+print_os_vars: false
 
 # version management
 submodules_versioncheck: true
