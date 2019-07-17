@@ -14,17 +14,17 @@ base_packages:
   - net-tools
   - links
 
-debian_packages: 
+debian_packages:
+  - debian-goodies
   - molly-guard
   - mtr-tiny
   - knot-dnsutils
-  - aptitude
   - python-apt
   - python3-apt
   - fio
-  - debian-goodies
   - apt-dater-host
   - apt-transport-https
+  - aptitude
 
 packages_for_all_except_rhel:
   - ranger
@@ -47,5 +47,5 @@ fedora_packages:
   - python3-pip 
   - python3
 
-playbook_version_number: 8961 # should be over ninethousand
+playbook_version_number: 8964 # should be over ninethousand
 playbook_version_path: '/etc/ansible-version/base-packages_ffbsee_or_chaos-bodensee_github.version' 

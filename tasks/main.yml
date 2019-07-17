@@ -16,21 +16,22 @@
     update_cache: yes
     cache_valid_time: 43200
   when:
-    ansible_os_family == 'Debian'
+    - ansible_os_family == 'Debian'
+    - ansible_machine != 'armv6l'
 
 - name: Install common base packages [all]
   become: yes
   package:
     name: "{{ base_packages }}"
     state: present
+  when: ansible_machine != 'armv6l'
 
 - name: Install common base packages [Fedora]
   become: yes
   package:
     name: "{{ fedora_packages }}"
     state: present
-  when:
-    ansible_distribution == 'Fedora'
+  when: ansible_distribution == 'Fedora'
 
 - name: install packages for everyone except centos/rhel
   become: true
@@ -41,6 +42,8 @@
     - ansible_os_family != 'RedHat'
     - ansible_distribution_version != "14.04"
     - ansible_distribution_version != "12.04"
+    - ansible_distribution_release != 'wheezy'
+    - ansible_machine != 'armv6l'
 
 - name: Install extra packages
   become: true
@@ -50,6 +53,7 @@
   when:
     - packages_extra is defined
     - packages_extra != '[]'
+    - ansible_machine != 'armv6l'
 
 - name: Remove rpcbind, nfs-common
   become: yes
@@ -58,6 +62,7 @@
       - rpcbind
       - nfs-common
     state: absent
+  when: ansible_machine != 'armv6l'
 
 - name: Upgrade all packages to latest
   become: true

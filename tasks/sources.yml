@@ -9,8 +9,9 @@
     state: present
     update_cache: yes
     cache_valid_time: 43200
-  when: ansible_distribution == 'Debian'
-
+  when:
+    - ansible_distribution == 'Debian'
+    - ansible_machine != 'armv6l'
 
 - name: add eth zurich apt
   become: true
@@ -21,8 +22,9 @@
     - add_ethz | bool
     - ansible_distribution == 'Debian'
     - ansible_distribution_release == "wheezy" or ansible_distribution_release == "buster"
+    - ansible_machine != 'armv6l'
 
-- name: iremove eth zurich apt
+- name: remove eth zurich apt
   become: true
   apt_repository:
     repo: deb-src https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main
@@ -30,3 +32,4 @@
   when:
     - not add_ethz | bool
     - ansible_distribution == 'Debian'
+    - ansible_machine != 'armv6l'
