@@ -17,14 +17,14 @@
     cache_valid_time: 43200
   when:
     - ansible_os_family == 'Debian'
-    - ansible_machine != 'armv6l' and ansible_distribution_version < 8
+    - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
 
 - name: Install common base packages [all]
   become: yes
   package:
     name: "{{ base_packages }}"
     state: present
-  when: ansible_machine != 'armv6l' and ansible_distribution_version < 8
+  when: ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
 
 - name: Install common base packages [Fedora]
   become: yes
@@ -43,7 +43,7 @@
     - ansible_distribution_version != "14.04"
     - ansible_distribution_version != "12.04"
     - ansible_distribution_release != 'wheezy'
-    - ansible_machine != 'armv6l' and ansible_distribution_version < 8
+    - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
 
 - name: Install extra packages
   become: true
@@ -53,7 +53,7 @@
   when:
     - packages_extra is defined
     - packages_extra != '[]'
-    - ansible_machine != 'armv6l' and ansible_distribution_version < 8
+    - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
 
 - name: Remove rpcbind, nfs-common
   become: yes
@@ -62,7 +62,7 @@
       - rpcbind
       - nfs-common
     state: absent
-  when: ansible_machine != 'armv6l' and ansible_distribution_version < 8
+  when: ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
 
 - name: Upgrade all packages to latest
   become: true
@@ -71,7 +71,7 @@
     state: latest
   when:
     - upgrade_packages_to_latest_version|bool
-    - ansible_machine != 'armv6l' and ansible_distribution_version < 8
+    - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
 
 - include_tasks: editor.yml
   when: editor_is_vim | bool

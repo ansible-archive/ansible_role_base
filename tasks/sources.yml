@@ -11,8 +11,7 @@
     cache_valid_time: 43200
   when:
     - ansible_distribution == 'Debian'
-    - ansible_machine != 'armv6l' and ansible_distribution_version < 8
-
+    - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
 
 - name: add eth zurich apt
   become: true
@@ -22,7 +21,7 @@
   when:
     - add_ethz | bool
     - ansible_distribution == 'Debian'
-    - ansible_machine != 'armv6l' and ansible_distribution_version < 8
+    - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
 
 - name: remove eth zurich apt
   become: true
@@ -32,4 +31,4 @@
   when:
     - not add_ethz | bool
     - ansible_distribution == 'Debian'
-    - ansible_machine != 'armv6l' and ansible_distribution_version < 8
+    - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
