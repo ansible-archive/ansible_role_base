@@ -16,5 +16,8 @@ editor_is_vim: true
 # print os variables
 print_os_vars: false
 
+# do we want non-free firmware from eth zuerich?
+base_pkg_non_free_firmware: false
+
 # version management
 submodules_versioncheck: true

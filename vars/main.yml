@@ -47,5 +47,5 @@ fedora_packages:
   - python3-pip 
   - python3
 
-playbook_version_number: 8966 # should be over ninethousand
+playbook_version_number: 8968 # should be over ninethousand
 playbook_version_path: '/etc/ansible-version/base-packages_ffbsee_or_chaos-bodensee_github.version' 
