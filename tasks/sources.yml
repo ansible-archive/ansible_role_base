@@ -20,6 +20,7 @@
     state: present
   when:
     - not base_pkg_non_free_firmware | bool
+    - not base_pkg_contrib | bool
     - add_ethz | bool
     - ansible_distribution == 'Debian'
     - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
@@ -31,6 +32,7 @@
     state: absent
   when:
     - not base_pkg_non_free_firmware | bool
+    - not base_pkg_contrib | bool
     - not add_ethz | bool
     - ansible_distribution == 'Debian'
     - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
@@ -42,6 +44,7 @@
     state: present
   when:
     - base_pkg_non_free_firmware | bool
+    - not base_pkg_contrib | bool
     - add_ethz | bool
     - ansible_distribution == 'Debian'
     - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
@@ -53,6 +56,31 @@
     state: absent
   when:
     - base_pkg_non_free_firmware | bool
+    - not base_pkg_contrib | bool
+    - not add_ethz | bool
+    - ansible_distribution == 'Debian'
+    - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
+
+- name: add eth zurich apt + contrib + non-free
+  become: true
+  apt_repository:
+    repo: deb-src https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main contrib non-free
+    state: present
+  when:
+    - base_pkg_non_free_firmware | bool
+    - base_pkg_contrib | bool
+    - add_ethz | bool
+    - ansible_distribution == 'Debian'
+    - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
+
+- name: remove eth zurich apt + contrib + non-free
+  become: true
+  apt_repository:
+    repo: deb-src https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main contrib non-free
+    state: absent
+  when:
+    - base_pkg_non_free_firmware | bool
+    - base_pkg_contrib | bool
     - not add_ethz | bool
     - ansible_distribution == 'Debian'
     - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'

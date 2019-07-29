@@ -19,5 +19,8 @@ print_os_vars: false
 # do we want non-free firmware from eth zuerich?
 base_pkg_non_free_firmware: false
 
+# do we want contrib from eth zuerich?
+base_pkg_contrib: false
+
 # version management
 submodules_versioncheck: true
