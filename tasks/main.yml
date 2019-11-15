@@ -62,7 +62,7 @@
     state: absent
   when:
     - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
-    - ansible_os_family != 'Redhat'
+    - ansible_os_family == 'Debian'
 
 - name: Upgrade all packages to latest
   become: true

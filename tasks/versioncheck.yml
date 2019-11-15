@@ -2,19 +2,27 @@
 - name: Create directory for versionscheck
   become: true
   file:
-    path: '/etc/ansible-version'
+    path: '/etc/.ansible-version'
     state: directory
     mode: 0755
   when: submodules_versioncheck|bool
 
+- name: check legacy playbook version
+  become: true
+  slurp:
+    src: "/etc/ansible-version/{{ playbook_version_path }}"
+  register: legacy_playbook_version
+  when: submodules_versioncheck|bool
+  ignore_errors: yes
+  changed_when: False
+
 - name: check playbook version
   become: true
   slurp:
-    src: "{{ playbook_version_path }}"
+    src: "/etc/.ansible-version/{{ playbook_version_path }}"
   register: playbook_version
   when: submodules_versioncheck|bool
   ignore_errors: yes
-  failed_when: false
 
 - name: Print remote role version
   debug:
@@ -31,10 +39,29 @@
     msg: "Your ansible module has the version '{{ playbook_version_number }}' and is outdated. You need to update it!"
   when:
     - playbook_version.content|default("Mgo=")|b64decode|int - 1 >= playbook_version_number|int and submodules_versioncheck|bool
+    - legacy_playbook_version.content|default("Mgo=")|b64decode|int - 1 >= playbook_version_number|int and submodules_versioncheck|bool
+
+- name: delete legacy version if needed
+  become: true
+  file:
+    state: absent
+    path: "/etc/ansible-version/{{ playbook_version_path }}"
+
+- name: check if '/etc/ansible-version/' is empty
+  find:
+    paths: '/etc/ansible-version/'
+  register: filesFound
+
+- name: delete legacy version folder if needed
+  become: true
+  file:
+    state: absent
+    path: "/etc/ansible-version"
+  when: filesFound.matched < 0
 
 - name: write new version to remote disk
   become: true
   copy:
     content: "{{ playbook_version_number }}"
-    dest: "{{ playbook_version_path }}"
+    dest: "/etc/.ansible-version/{{ playbook_version_path }}"
   when: submodules_versioncheck|bool
