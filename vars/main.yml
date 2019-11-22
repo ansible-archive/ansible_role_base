@@ -13,6 +13,7 @@ base_packages:
   - unzip
   - net-tools
   - links
+  - gdisk
 
 debian_packages:
   - debian-goodies
@@ -51,5 +52,5 @@ fedora_packages:
   - python3-pip 
   - python3
 
-playbook_version_number: 8974 # should be over ninethousand
+playbook_version_number: 8975 # should be over ninethousand
 playbook_version_path: 'base-packages_ffbsee_or_chaos-bodensee_github.version' 
