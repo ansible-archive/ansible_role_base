@@ -29,6 +29,7 @@ debian_packages:
 #non_legacy_debian_packages:
   - python-apt
   - python3-apt
+  - smartctl
 
 packages_for_all_except_rhel:
   - ranger
@@ -53,5 +54,5 @@ fedora_packages:
   - python3-pip 
   - python3
 
-playbook_version_number: 8976 # should be over ninethousand
+playbook_version_number: 8977 # should be over ninethousand
 playbook_version_path: 'base-packages_ffbsee_or_chaos-bodensee_github.version' 
