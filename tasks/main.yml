@@ -17,12 +17,23 @@
     cache_valid_time: 43200
   when: ansible_os_family == 'Debian' and ansible_distribution_version != '7' and ansible_distribution_release != 'wheezy' and ansible_machine != 'armv6l'
 
-- name: Install common base packages [all]
+- name: Install common base packages [all - wheezy]
+  become: yes
+  package:
+    name: "{{ base_packages_extended }}"
+    state: present
+  when:
+    - ansible_machine != 'armv6l'
+    - ansible_distribution_release != 'wheezy'
+    - ansible_architecture != 'armv7l'
+
+- name: Install extended base packages [all - wheezy - rpi]
   become: yes
   package:
     name: "{{ base_packages }}"
     state: present
   when: ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
+
 
 - name: Install common base packages [Fedora]
   become: yes

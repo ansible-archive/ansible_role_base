@@ -4,7 +4,6 @@ base_packages:
   - tmux
   - sudo
   - fail2ban
-  - sysstat
   - ethtool
   - vim
   - nmap
@@ -15,6 +14,10 @@ base_packages:
   - net-tools
   - links
   - gdisk
+
+base_packages_extended:
+  - tcpdump
+  - sysstat
 
 debian_packages:
   - debian-goodies
@@ -54,5 +57,5 @@ fedora_packages:
   - python3-pip 
   - python3
 
-playbook_version_number: 8977 # should be over ninethousand
+playbook_version_number: 8978 # should be over ninethousand
 playbook_version_path: 'base-packages_ffbsee_or_chaos-bodensee_github.version' 
