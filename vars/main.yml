@@ -18,6 +18,7 @@ base_packages:
 base_packages_extended:
   - tcpdump
   - sysstat
+  - smartmontools
 
 debian_packages:
   - debian-goodies
@@ -32,7 +33,6 @@ debian_packages:
 #non_legacy_debian_packages:
   - python-apt
   - python3-apt
-  - smartctl
 
 packages_for_all_except_rhel:
   - ranger
@@ -57,5 +57,5 @@ fedora_packages:
   - python3-pip 
   - python3
 
-playbook_version_number: 8978 # should be over ninethousand
+playbook_version_number: 8979 # should be over ninethousand
 playbook_version_path: 'base-packages_ffbsee_or_chaos-bodensee_github.version' 
