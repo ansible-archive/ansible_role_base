@@ -55,8 +55,8 @@ fedora_packages:
   - mtr
   - libselinux-python
   - ranger
-  - python3-pip 
+  - python3-pip
   - python3
 
-playbook_version_number: 8979 # should be over ninethousand
-playbook_version_path: 'base-packages_ffbsee_or_chaos-bodensee_github.version' 
+playbook_version_number: 8980 # should be over ninethousand
+playbook_version_path: 'base-packages_ffbsee_or_chaos-bodensee_github.version'
