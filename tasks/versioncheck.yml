@@ -7,15 +7,6 @@
     mode: 0755
   when: submodules_versioncheck|bool
 
-- name: check legacy playbook version
-  become: true
-  slurp:
-    src: "/etc/ansible-version/{{ playbook_version_path }}"
-  register: legacy_playbook_version
-  when: submodules_versioncheck|bool
-  ignore_errors: yes
-  changed_when: False
-
 - name: check playbook version
   become: true
   slurp:
@@ -39,25 +30,11 @@
     msg: "Your ansible module has the version '{{ playbook_version_number }}' and is outdated. You need to update it!"
   when:
     - playbook_version.content|default("Mgo=")|b64decode|int - 1 >= playbook_version_number|int and submodules_versioncheck|bool
-    - legacy_playbook_version.content|default("Mgo=")|b64decode|int - 1 >= playbook_version_number|int and submodules_versioncheck|bool
-
-- name: delete legacy version if needed
-  become: true
-  file:
-    state: absent
-    path: "/etc/ansible-version/{{ playbook_version_path }}"
 
 - name: check if '/etc/ansible-version/' is empty
   find:
     paths: '/etc/ansible-version/'
   register: filesFound
-
-- name: delete legacy version folder if needed
-  become: true
-  file:
-    state: absent
-    path: "/etc/ansible-version"
-  when: filesFound.matched < 0
 
 - name: write new version to remote disk
   become: true

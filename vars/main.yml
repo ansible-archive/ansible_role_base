@@ -58,5 +58,5 @@ fedora_packages:
   - python3-pip
   - python3
 
-playbook_version_number: 8980 # should be over ninethousand
-playbook_version_path: 'base-packages_ffbsee_or_chaos-bodensee_github.version'
+playbook_version_number: 8981 # should be over ninethousand
+playbook_version_path: 'base-packages_roles-ansible_github.version'
