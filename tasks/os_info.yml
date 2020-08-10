@@ -1,4 +1,13 @@
 ---
  - name: Print OS Infos
    debug:
-      msg: "   ansible_os_family = '{{ ansible_os_family }}'\n   ansible_distribution = '{{ ansible_distribution }}'\n   ansible_distribution_version = '{{ ansible_distribution_version }}'\n   ansible_distribution_release = '{{ ansible_distribution_release }}'\n   ansible_machine = '{{ ansible_machine }}'\n\n\n   ansible_hostname = '{{ ansible_hostname }}'\n   ansible_fqdn = '{{ ansible_fqdn }}'\n"
+      msg: |
+        ansible_os_family = '{{ ansible_os_family }}'
+        ansible_distribution = '{{ ansible_distribution }}'
+        ansible_distribution_version = '{{ ansible_distribution_version }}'
+        ansible_distribution_release = '{{ ansible_distribution_release }}'
+        ansible_machine = '{{ ansible_machine }}'
+
+        inventory_hostname = '{{ inventory_hostname }}'
+        ansible_hostname = '{{ ansible_hostname }}'
+        ansible_fqdn = '{{ ansible_fqdn }}'
