@@ -10,7 +10,6 @@
     update_cache: yes
     cache_valid_time: 43200
   when:
-    - ansible_distribution == 'Debian'
     - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
 
 - name: add eth zurich apt
@@ -22,18 +21,6 @@
     - not base_pkg_non_free_firmware | bool
     - not base_pkg_contrib | bool
     - add_ethz | bool
-    - ansible_distribution == 'Debian'
-    - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
-
-- name: remove eth zurich apt
-  become: true
-  apt_repository:
-    repo: deb https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main
-    state: absent
-  when:
-    - not base_pkg_non_free_firmware | bool
-    - not base_pkg_contrib | bool
-    - not add_ethz | bool
     - ansible_distribution == 'Debian'
     - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
 

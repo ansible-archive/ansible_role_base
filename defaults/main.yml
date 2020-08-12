@@ -1,14 +1,23 @@
 ---
-# if you are interested in adding extra packages... do it here!
-packages_extra: []
+# install these additional packages
+base__extra_packages: []
 # - foo
 # - bar
+
+base__add_ethz: "{{ add_ethz }}"
+
+
+
+
+# LEGACY VARS
+# ++ WILL BE REMOVED SOON ++
+# add eth zurich apt source
+add_ethz: true
+
 
 # do we want the latest package version or just upgrade manually?
 upgrade_packages_to_latest_version: true
 
-# add eth zurich apt source
-add_ethz: true
 
 # we use vim!
 editor_is_vim: true

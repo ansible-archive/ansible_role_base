@@ -6,7 +6,9 @@
   when: submodules_versioncheck | bool
 
 - include_tasks: sources.yml
-  when: ansible_distribution == 'Debian'
+  when:
+    - ansible_os_family == 'Debian'
+    - base__add_ethz | bool
 
 - name: Install common base packages [Debian]
   become: yes
