@@ -7,8 +7,6 @@
       - apt-dater-host
       - apt-transport-https
     state: present
-    update_cache: yes
-    cache_valid_time: 43200
   when:
     - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
 
@@ -17,6 +15,7 @@
   apt_repository:
     repo: deb https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main
     state: present
+    mode: 0644
   when:
     - not base__pkg_non_free_firmware | bool
     - not base__pkg_contrib | bool
@@ -27,6 +26,7 @@
   apt_repository:
     repo: deb-src https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main non-free
     state: present
+    mode: 0644
   when:
     - base__pkg_non_free_firmware | bool
     - not base__pkg_contrib | bool
@@ -37,6 +37,7 @@
   apt_repository:
     repo: deb-src https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main contrib non-free
     state: present
+    mode: 0644
   when:
     - base__pkg_non_free_firmware | bool
     - base__pkg_contrib | bool
