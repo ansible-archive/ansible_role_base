@@ -37,7 +37,8 @@ base__debian_packages:
   - python3-apt
   - dnsutils
 
-packages_for_all_except_rhel:
+# packages for reasonable linux servers (not RHEL/Centos)
+base__linux_packages:
   - ranger
   - python3-pip
   - python3
