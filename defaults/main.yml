@@ -4,8 +4,14 @@ base__extra_packages: []
 # - foo
 # - bar
 
+# should we add additional package source?
 base__add_ethz: "{{ add_ethz }}"
+# add nonfree/firmware packages?
+base__pkg_non_free_firmware: "{{ base_pkg_non_free_firmware }}"
+base__pkg_contrib: "{{ base_pkg_contrib }}"
 
+# optionaly print some OS vars
+base__print_os_vars: "{{ print_os_vars }}"
 
 
 

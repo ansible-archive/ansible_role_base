@@ -9,6 +9,7 @@
   when:
     - ansible_os_family == 'Debian'
     - base__add_ethz | bool
+    - ansible_architecture == 'x86_64'
 
 - name: Install common base packages [Debian]
   become: yes
