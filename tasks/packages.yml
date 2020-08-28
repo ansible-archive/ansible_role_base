@@ -31,7 +31,7 @@
     name: "{{ base__linux_packages }}"
     state: "{{ base__package_state }}"
   when: |
-    ansible_distribution == 'Ubuntu' and ansible_distribution_version | float >= 16.0 or
+    ansible_distribution == 'Ubuntu' and ansible_distribution_version | float >= 18.0 or
     ansible_distribution == 'Fedora' and ansible_distribution_version | float >= 32 or
-    ansible_distribution == 'Debian' and ansible_distribution_version | float >= 8 or
+    ansible_distribution == 'Debian' and ansible_distribution_version | float >= 9 or
     ansible_os_family == 'Archlinux'
