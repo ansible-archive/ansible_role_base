@@ -1,0 +1,16 @@
+name: Ansible check ubuntu:xenial
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: ansible check with ubuntu:xenial
+      uses: roles-ansible/check-ansible-ubuntu-xenial-action@master
+      with:
+        targets: "./"

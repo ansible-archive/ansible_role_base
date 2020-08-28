@@ -1,0 +1,16 @@
+name: Ansible check debian:sid
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: ansible check with debian:sid
+      uses: roles-ansible/check-ansible-debian-sid-action@master
+      with:
+        targets: "./"

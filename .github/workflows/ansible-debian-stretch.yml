@@ -1,0 +1,16 @@
+name: Ansible check debian:stretch
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: ansible check with debian:stretch
+      uses: roles-ansible/check-ansible-debian-stretch-action@master
+      with:
+        targets: "./"

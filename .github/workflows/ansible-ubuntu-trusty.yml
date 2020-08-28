@@ -1,0 +1,16 @@
+name: Ansible check ubuntu:trusty
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: ansible check with ubuntu:trusty
+      uses: roles-ansible/check-ansible-ubuntu-trusty-action@master
+      with:
+        targets: "./"

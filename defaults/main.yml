@@ -13,9 +13,12 @@ base__pkg_contrib: "{{ base_pkg_contrib }}"
 # optionaly print some OS vars
 base__print_os_vars: "{{ print_os_vars }}"
 
+# choose latest or present for package state
+# set this to latest for updating all packages!
 base__package_state: 'present'
 
-
+# should we update all packages?
+base__upgrade_packages_to_latest_version: "{{ upgrade_packages_to_latest_version }}"
 
 # LEGACY VARS
 # ++ WILL BE REMOVED SOON ++
@@ -24,7 +27,7 @@ add_ethz: true
 
 
 # do we want the latest package version or just upgrade manually?
-upgrade_packages_to_latest_version: true
+upgrade_packages_to_latest_version: false
 
 
 # we use vim!

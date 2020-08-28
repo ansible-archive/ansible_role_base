@@ -1,0 +1,16 @@
+name: Ansible check debian:stable
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: ansible check with debian:stable
+      uses: roles-ansible/check-ansible-debian-stable-action@master
+      with:
+        targets: "./"

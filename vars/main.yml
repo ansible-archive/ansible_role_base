@@ -54,12 +54,5 @@ base__linux_packages:
   - youtube-dl
   - mpv
 
-fedora_packages:
-  - mtr
-  - libselinux-python
-  - ranger
-  - python3-pip
-  - python3
-
-playbook_version_number: 8998 # should be over ninethousand
+playbook_version_number: 8999 # should be over ninethousand
 playbook_version_path: 'base-packages_roles-ansible_github.version'

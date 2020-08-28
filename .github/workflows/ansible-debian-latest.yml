@@ -1,0 +1,16 @@
+name: Ansible check debian:latest
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: ansible check with debian:latest
+      uses: roles-ansible/check-ansible-debian-latest-action@master
+      with:
+        targets: "./"

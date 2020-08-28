@@ -1,0 +1,16 @@
+name: Ansible check fedora:33
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: ansible check with fedora:33
+      uses: roles-ansible/check-ansible-fedora-33-action@master
+      with:
+        targets: "./"
