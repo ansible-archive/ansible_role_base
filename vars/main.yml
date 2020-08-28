@@ -34,6 +34,7 @@ base__debian_packages:
   - aptitude
   - python3-setuptools
   - python3-apt
+  - ethstatus
 
 # packages for reasonable linux servers (not RHEL/Centos)
 base__linux_packages:
@@ -44,7 +45,6 @@ base__linux_packages:
   - htop
   - iotop
   - iftop
-  - ethstatus
   - nethogs
   - nload
   - ncdu
