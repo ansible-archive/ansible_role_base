@@ -11,81 +11,86 @@
     - base__add_ethz | bool
     - ansible_architecture == 'x86_64'
 
-- name: Install common base packages [Debian]
-  become: yes
-  apt:
-    package: "{{ debian_packages }}"
-    state: present
-    update_cache: yes
-    cache_valid_time: 43200
-  when: ansible_os_family == 'Debian' and ansible_distribution_version != '7' and ansible_distribution_release != 'wheezy' and ansible_machine != 'armv6l'
-
-- name: Install common base packages [all - wheezy]
-  become: yes
-  package:
-    name: "{{ base_packages_extended }}"
-    state: present
-  when:
-    - ansible_machine != 'armv6l'
-    - ansible_distribution_release != 'wheezy'
-    - ansible_architecture != 'armv7l'
-
-- name: Install extended base packages [all - wheezy - rpi]
-  become: yes
-  package:
-    name: "{{ base_packages }}"
-    state: present
-  when: ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
+- include_tasks: packages.yml
 
 
-- name: Install common base packages [Fedora]
-  become: yes
-  package:
-    name: "{{ fedora_packages }}"
-    state: present
-  when: ansible_distribution == 'Fedora'
 
-- name: install packages for everyone except centos/rhel
-  become: true
-  package:
-    name: "{{ packages_for_all_except_rhel }}"
-    state: present
-  when:
-    - ansible_os_family != 'RedHat'
-    - ansible_distribution_version != "14.04"
-    - ansible_distribution_version != "12.04"
-    - ansible_distribution_release != 'wheezy'
-    - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
 
-- name: Install extra packages
-  become: true
-  package:
-    name: "{{ packages_extra }}"
-    state: present
-  when:
-    - packages_extra is defined
-    - packages_extra != '[]'
-    - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
+#- name: Install common base packages [Debian]
+#  become: yes
+#  apt:
+#    package: "{{ debian_packages }}"
+#    state: present
+#    update_cache: yes
+#    cache_valid_time: 43200
+#  when: ansible_os_family == 'Debian' and ansible_distribution_version != '7' and ansible_distribution_release != 'wheezy' and ansible_machine != 'armv6l'
 
-- name: Remove rpcbind, nfs-common
-  become: yes
-  package:
-    name:
-      - rpcbind
-      - nfs-common
-    state: absent
-  when:
-    - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
-    - ansible_os_family == 'Debian'
+#- name: Install common base packages [all - wheezy]
+#  become: yes
+#  package:
+#    name: "{{ base_packages_extended }}"
+#    state: present
+#  when:
+#    - ansible_machine != 'armv6l'
+#    - ansible_distribution_release != 'wheezy'
+#    - ansible_architecture != 'armv7l'
 
-- name: Upgrade all packages to latest
-  become: true
-  package:
-    name: "*"
-    state: latest
-  when:
-    - upgrade_packages_to_latest_version|bool
-    - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
+#- name: Install extended base packages [all - wheezy - rpi]
+#  become: yes
+#  package:
+#    name: "{{ base_packages }}"
+#    state: present
+#  when: ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
+
+
+#-# name: Install common base packages [Fedora]
+#  become: yes
+#  package:
+#    name: "{{ fedora_packages }}"
+#    state: present
+#  when: ansible_distribution == 'Fedora'
+#
+#- name: install packages for everyone except centos/rhel
+#  become: true
+#  package:
+#    name: "{{ packages_for_all_except_rhel }}"
+#    state: present
+#  when:
+#    - ansible_os_family != 'RedHat'
+#    - ansible_distribution_version != "14.04"
+#    - ansible_distribution_version != "12.04"
+#    - ansible_distribution_release != 'wheezy'
+#    - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
+
+#- name: Install extra packages
+#  become: true
+#  package:
+#    name: "{{ packages_extra }}"
+#    state: present
+#  when:
+#    - packages_extra is defined
+#    - packages_extra != '[]'
+#    - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
+#
+#- name: Remove rpcbind, nfs-common
+#  become: yes
+#  package:
+#    name:
+#      - rpcbind
+#      - nfs-common
+#    state: absent
+#  when:
+#    - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
+#    - ansible_os_family == 'Debian'
+#
+#- name: Upgrade all packages to latest
+#  become: true
+#  package:
+#    name: "*"
+#    state: latest
+#  when:
+#    - upgrade_packages_to_latest_version|bool
+#    - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
 
 - include_tasks: editor.yml
   when: editor_is_vim | bool

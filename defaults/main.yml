@@ -13,6 +13,8 @@ base__pkg_contrib: "{{ base_pkg_contrib }}"
 # optionaly print some OS vars
 base__print_os_vars: "{{ print_os_vars }}"
 
+base__package_state: 'present'
+
 
 
 # LEGACY VARS

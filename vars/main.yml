@@ -1,9 +1,9 @@
 ---
-base_packages:
+# must-have packages for all systems
+base__packages:
   - rsync
   - tmux
   - sudo
-  - fail2ban
   - ethtool
   - vim
   - nmap
@@ -16,10 +16,12 @@ base_packages:
   - gdisk
   - lsof
 
-base_packages_extended:
+# packages for all non-legacy x86 systems
+base__modern_packages:
   - tcpdump
   - sysstat
   - smartmontools
+
 
 debian_packages:
   - debian-goodies
