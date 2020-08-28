@@ -23,7 +23,8 @@ base__modern_packages:
   - smartmontools
 
 
-debian_packages:
+# debian/ubuntu packages
+base__debian_packages:
   - debian-goodies
   - molly-guard
   - mtr-tiny
@@ -33,9 +34,8 @@ debian_packages:
   - apt-transport-https
   - aptitude
   - python3-setuptools
-#non_legacy_debian_packages:
-  - python-apt
   - python3-apt
+  - dnsutils
 
 packages_for_all_except_rhel:
   - ranger
@@ -60,5 +60,5 @@ fedora_packages:
   - python3-pip
   - python3
 
-playbook_version_number: 8981 # should be over ninethousand
+playbook_version_number: 8998 # should be over ninethousand
 playbook_version_path: 'base-packages_roles-ansible_github.version'

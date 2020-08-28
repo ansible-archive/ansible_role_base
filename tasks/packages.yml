@@ -15,3 +15,12 @@
     ansible_os_family == 'RedHat' and ansible_distribution_version | float >= "7" or
     ansible_distribution == 'Debian' and ansible_distribution_version | float >= 8 or
     ansible_os_family == 'Archlinux'
+
+- name: install packages for all non-legacy Debian/Ububntu systems
+  become: true
+  package:
+    name: "{{ base__debian_packages }}"
+    state: "{{ base__package_state }}"
+  when: |
+    ansible_distribution == 'Ubuntu' and ansible_distribution_version | float >= "16.0" or
+    ansible_distribution == 'Debian' and ansible_distribution_version | float >= 8
