@@ -7,8 +7,6 @@
       - apt-dater-host
       - apt-transport-https
     state: present
-  when:
-    - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
 
 - name: add eth zurich apt (main)
   become: true
@@ -19,7 +17,6 @@
   when:
     - not base__pkg_non_free_firmware | bool
     - not base__pkg_contrib | bool
-    - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
 
 - name: add eth zurich apt (main non-free)
   become: true
@@ -30,7 +27,6 @@
   when:
     - base__pkg_non_free_firmware | bool
     - not base__pkg_contrib | bool
-    - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
 
 - name: add eth zurich apt (main contrib non-free)
   become: true
@@ -41,4 +37,3 @@
   when:
     - base__pkg_non_free_firmware | bool
     - base__pkg_contrib | bool
-    - ansible_machine != 'armv6l' and ansible_distribution_release != 'wheezy'
