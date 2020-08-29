@@ -21,7 +21,6 @@ base__modern_packages:
   - sysstat
   - smartmontools
 
-
 # debian/ubuntu packages
 base__debian_packages:
   - debian-goodies
@@ -36,12 +35,20 @@ base__debian_packages:
   - python3-apt
   - ethstatus
 
+# modern python packages where python stands for python3
+base__python_packages:
+  - python-pip
+  - python
+
+# modern python packages
+base__python3_packages:
+  - python3-pip
+  - python3
+
 # packages for reasonable linux servers (not RHEL/Centos)
 base__linux_packages:
   - links
   - ranger
-  - python3-pip
-  - python3
   - htop
   - iotop
   - iftop
@@ -51,7 +58,15 @@ base__linux_packages:
   - atop
   - asciinema
   - youtube-dl
+
+# os family_specific packages
+Debian:
   - mpv
 
-playbook_version_number: 9002 # should be over ninethousand
+RedHat: []
+
+Archlinux:
+  - mpv
+
+playbook_version_number: 9003 # should be over ninethousand
 playbook_version_path: 'base-packages_roles-ansible_github.version'
