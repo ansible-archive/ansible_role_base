@@ -52,14 +52,3 @@
     ansible_distribution == 'Fedora' and ansible_distribution_version | float >= 32 or
     ansible_distribution == 'Debian' and ansible_distribution_version | float >= 9 or
     ansible_os_family == 'Archlinux'
-
-- name: install os_family specific packages for all non-legacy systems
-  become: true
-  package:
-    name: "{{ ansible_os_family }}"
-    state: "{{ base__package_state }}"
-  when: |
-    ansible_distribution == 'Ubuntu' and ansible_distribution_version | float >= 18.0 or
-    ansible_os_family == 'RedHat' and ansible_distribution_version | float >= 7 or
-    ansible_distribution == 'Debian' and ansible_distribution_version | float >= 9 or
-    ansible_os_family == 'Archlinux'

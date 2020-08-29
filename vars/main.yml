@@ -59,14 +59,5 @@ base__linux_packages:
   - asciinema
   - youtube-dl
 
-# os family_specific packages
-Debian:
-  - mpv
-
-RedHat: []
-
-Archlinux:
-  - mpv
-
-playbook_version_number: 9003 # should be over ninethousand
+playbook_version_number: 9004 # should be over ninethousand
 playbook_version_path: 'base-packages_roles-ansible_github.version'
