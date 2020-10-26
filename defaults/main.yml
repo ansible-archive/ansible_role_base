@@ -43,4 +43,4 @@ base_pkg_non_free_firmware: false
 base_pkg_contrib: false
 
 # version management
-submodules_versioncheck: true
+submodules_versioncheck: false
