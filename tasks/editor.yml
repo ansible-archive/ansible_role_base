@@ -8,6 +8,7 @@
     - editor_is_vim | bool
     - ansible_distribution != 'CentOS'
     - ansible_distribution != 'RedHat'
+    - ansible_distribution != 'Archlinux'
   ignore_errors: yes
 
 - name: vim is our editor
@@ -19,4 +20,5 @@
     - editor_is_vim | bool
     - ansible_distribution == 'CentOS'
     - ansible_distribution == 'RedHat'
+    - ansible_distribution == 'Archlinux'
   ignore_errors: yes
