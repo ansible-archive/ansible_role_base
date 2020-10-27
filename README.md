@@ -48,7 +48,7 @@ If you want to find out more about our tests, please have a look at the github m
 
 | test status | Github Marketplace |
 | :---------  | :----------------  |
-| [![Travis Build Status](https://travis-ci.org/roles-ansible/ansible_role_base.svg?branch=master)](https://travis-ci.org/roles-ansible/ansible_role_base) | [.travis.yml](https://github.com/roles-ansible/ansible_role_base/blob/master/.travis.yml) |
+| [![Travis Build Status](https://travis-ci.com/roles-ansible/ansible_role_base.svg?branch=master)](https://travis-ci.com/roles-ansible/ansible_role_base) | [.travis.yml](https://github.com/roles-ansible/ansible_role_base/blob/master/.travis.yml) |
 |||
 | [![Ansible Lint check](https://github.com/roles-ansible/ansible_role_base/workflows/Ansible%20Lint%20check/badge.svg)](https://github.com/roles-ansible/ansible_role_base/actions?query=workflow%3A%22Ansible+Lint+check%22) | [ansible-lint action](https://github.com/marketplace/actions/ansible-lint)
 | [![Ansible check debian:stable](https://github.com/roles-ansible/ansible_role_base/workflows/Ansible%20check%20debian:stable/badge.svg)](https://github.com/roles-ansible/ansible_role_base/actions?query=workflow%3A%22Ansible+check+debian%3Astable%22) | [ansible test with debian stable](https://github.com/marketplace/actions/check-ansible-debian-stable) |

@@ -1,28 +1,27 @@
+---
+# OS Details
+os: linux
 language: python
-python: "3.8"
+python: '3.8'
 
-# Use the new container infrastructure
-sudo: false
+cache:
+  pip: true
 
-# Install ansible
-addons:
-  apt:
-    packages:
-    - python-pip
-
+# Install ansible and ansible-lint
 install:
-  # Install ansible
   - pip install ansible
+  - pip install ansible-lint
 
-  # Check ansible version
-  - ansible --version
-
-  # Create ansible.cfg with correct roles_path
-  - printf '[defaults]\nroles_path=../' >ansible.cfg
-
+# more advanced testing is currently handled with
+#  github actions. The gh-actions for our test are there:
+#  https://github.com/roles-ansible and are tagged
+#  with 'github-actions'  --> https://github.com/search?q=topic%3Agithub-actions+org%3Aroles-ansible&type=Repositories
 script:
-  # Basic role syntax check
-  - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
+  - ansible-lint .
+  - echo -e "\n\n\n\n\nWe use github actions for more detailed tests.\n\nMore details about that in our github repo at:\nhttps://github.com/roles-ansible/role-ranger/actions\n\n\n\n\n\n"
 
 notifications:
+  email:
+    on_success: never
+    on_failure: always
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
