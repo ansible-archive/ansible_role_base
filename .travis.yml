@@ -18,7 +18,7 @@ install:
 #  with 'github-actions'  --> https://github.com/search?q=topic%3Agithub-actions+org%3Aroles-ansible&type=Repositories
 script:
   - ansible-lint .
-  - echo -e "\n\n\n\n\nWe use github actions for more detailed tests.\n\nMore details about that in our github repo at:\nhttps://github.com/roles-ansible/role-ranger/actions\n\n\n\n\n\n"
+  - echo -e "\n\n\n\n\nWe use github actions for more detailed tests.\n\nMore details about that in our github repo at:\nhttps://github.com/roles-ansible/ansible_role_base/actions\n\n\n\n\n\n"
 
 notifications:
   email:
