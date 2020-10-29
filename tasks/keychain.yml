@@ -6,7 +6,6 @@
     state: "{{ base__package_state }}"
   when:
    - ansible_os_family != 'RedHat'
-   - install_keychain|bool
 
 - name: install keychain on centos
   become: yes
@@ -17,6 +16,3 @@
     state: "{{ base__package_state }}"
   when:
    - ansible_os_family == 'RedHat'
-   - install_keychain|bool
-
-
