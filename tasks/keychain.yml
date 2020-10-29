@@ -3,7 +3,7 @@
   become: yes
   package:
     name: keychain
-    state: latest
+    state: "{{ base__package_state }}"
   when:
    - ansible_os_family != 'RedHat'
    - install_keychain|bool
@@ -14,7 +14,7 @@
     name:
       - "{{ _base__keychain_rpm }}"
       - libselinux-python
-    state: present
+    state: "{{ base__package_state }}"
   when:
    - ansible_os_family == 'RedHat'
    - install_keychain|bool
