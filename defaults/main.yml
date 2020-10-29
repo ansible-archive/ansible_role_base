@@ -20,6 +20,16 @@ base__package_state: 'present'
 # should we update all packages?
 base__upgrade_packages_to_latest_version: "{{ upgrade_packages_to_latest_version }}"
 
+# install keycain to have a awesome ssh agent
+base__install_keychain: true
+
+# install vim as awesome command line editor
+base__install_vim: "{{ editor_is_vim }}"
+
+# directlink to keychain becaus RHEL do not provide it...
+_base__keychain_rpm: 'http://packages.psychotic.ninja/7/base/x86_64/RPMS//keychain-2.8.0-3.el7.psychotic.noarch.rpm'
+
+
 # LEGACY VARS
 # ++ WILL BE REMOVED SOON ++
 # add eth zurich apt source

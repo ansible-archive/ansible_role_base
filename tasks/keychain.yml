@@ -1,0 +1,22 @@
+---
+- name: install keychain to support ssh agent
+  become: yes
+  package:
+    name: keychain
+    state: latest
+  when:
+   - ansible_os_family != 'RedHat'
+   - install_keychain|bool
+
+- name: install keychain on centos
+  become: yes
+  yum:
+    name:
+      - "{{ _base__keychain_rpm }}"
+      - libselinux-python
+    state: present
+  when:
+   - ansible_os_family == 'RedHat'
+   - install_keychain|bool
+
+

@@ -38,6 +38,12 @@ base__package_state: 'present'
 # should we update all packages?
 base__upgrade_packages_to_latest_version: false
 
+# install keychain (ssh agent)
+base__install_keychain: true
+
+# install vim (comand line editor)
+base__install_vim: true
+
 # perform a simple versions check (true is recomended)
 submodules_versioncheck: false
 ```
