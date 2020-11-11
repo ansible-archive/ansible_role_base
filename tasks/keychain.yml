@@ -15,4 +15,4 @@
       - libselinux-python
     state: "{{ base__package_state }}"
   when:
-   - ansible_os_family == 'RedHat'
+   - ansible_os_family == 'RedHat' and ansible_distribution_version | float <= 7
