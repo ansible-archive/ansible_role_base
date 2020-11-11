@@ -22,4 +22,7 @@
     - base__upgrade_packages_to_latest_version|bool
 
 - include_tasks: editor.yml
-  when: editor_is_vim | bool
+  when: base__install_vim | bool
+
+- include_tasks: keychain.yml
+  when: base__install_keychain | bool
