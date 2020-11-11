@@ -12,7 +12,7 @@
   dnf:
     update_cache: yes
   when:
-    ansible_os_family == 'RedHat'
+    ansible_os_family == 'RedHat' and ansible_distribution_version | float >= 8 or
 
 - name: install base packages for all operating systems
   become: true
