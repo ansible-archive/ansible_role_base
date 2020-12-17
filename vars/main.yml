@@ -58,6 +58,7 @@ base__linux_packages:
   - atop
   - asciinema
   - youtube-dl
+  - bzip2
 
 playbook_version_number: 9005 # should be over ninethousand
 playbook_version_path: 'base-packages_roles-ansible_github.version'
