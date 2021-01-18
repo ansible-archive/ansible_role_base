@@ -13,7 +13,7 @@
     src: "/etc/.ansible-version/{{ playbook_version_path }}"
   register: playbook_version
   when: submodules_versioncheck|bool
-  ignore_errors: yes
+  ignore_errors: true
   failed_when: false
 
 - name: Print remote role version
