@@ -1,5 +1,7 @@
+---
 name: Ansible check debian:sid
 
+# yamllint disable-line rule:truthy
 on: [push, pull_request]
 
 jobs:
@@ -8,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: ansible check with debian:sid
-      uses: roles-ansible/check-ansible-debian-sid-action@master
-      with:
-        targets: "./"
+      - name: ansible check with debian:sid
+        uses: roles-ansible/check-ansible-debian-sid-action@master
+        with:
+          targets: "./"

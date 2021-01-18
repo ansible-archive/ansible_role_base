@@ -1,5 +1,7 @@
+---
 name: Ansible check debian:stable
 
+# yamllint disable-line rule:truthy
 on: [push, pull_request]
 
 jobs:
@@ -8,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: ansible check with debian:stable
-      uses: roles-ansible/check-ansible-debian-stable-action@master
-      with:
-        targets: "./"
+      - name: ansible check with debian:stable
+        uses: roles-ansible/check-ansible-debian-stable-action@master
+        with:
+          targets: "./"

@@ -2,7 +2,7 @@
 - name: update repo-cache for debian/ubuntu
   become: true
   apt:
-    update_cache: yes
+    update_cache: true
     cache_valid_time: 3600
   when:
     ansible_os_family == 'Debian'
@@ -10,7 +10,7 @@
 - name: update repo-cache for debian/ubuntu
   become: true
   dnf:
-    update_cache: yes
+    update_cache: true
   when:
     - ansible_os_family == 'RedHat' and ansible_distribution_version | float >= 8
 

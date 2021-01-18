@@ -9,7 +9,7 @@
     - ansible_distribution != 'CentOS'
     - ansible_distribution != 'RedHat'
     - ansible_distribution != 'Archlinux'
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: vim is our editor
   become: true
@@ -21,4 +21,4 @@
     - ansible_distribution == 'CentOS'
     - ansible_distribution == 'RedHat'
     - ansible_distribution == 'Archlinux'
-  ignore_errors: yes
+  ignore_errors: true
