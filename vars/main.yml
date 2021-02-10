@@ -19,7 +19,7 @@ base__packages:
 base__modern_packages:
   - tcpdump
   - sysstat
-  - smartmontools
+#  - smartmontools
 
 # debian/ubuntu packages
 base__debian_packages:
@@ -61,5 +61,5 @@ base__linux_packages:
   - bzip2
   - jq
 
-playbook_version_number: 9006  # should be over ninethousand
+playbook_version_number: 9007
 playbook_version_path: 'base-packages_roles-ansible_github.version'
