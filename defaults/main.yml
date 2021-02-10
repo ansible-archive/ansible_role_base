@@ -52,5 +52,8 @@ base_pkg_non_free_firmware: false
 # do we want contrib from eth zuerich?
 base_pkg_contrib: false
 
+# mailx for debian (recomended for unattended_upgrades role
+base__install_mailx: true
+
 # version management
 submodules_versioncheck: false

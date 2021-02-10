@@ -67,3 +67,11 @@
     ansible_distribution == 'Fedora' and ansible_distribution_version | float >= 32 or
     ansible_distribution == 'Debian' and ansible_distribution_version | float >= 9 or
     ansible_os_family == 'Archlinux'
+
+- name: install mailx on debian
+  become: true
+  package:
+    name:
+      - bsd-mailx
+    state: "{{ base__package_state }}"
+  when: ansible_distribution == 'Debian' and ansible_distribution_version | float >= 7 and base__install_mailx | bool
