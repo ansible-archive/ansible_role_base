@@ -12,7 +12,7 @@
   when:
     - base__add_ethz | bool
     - ansible_architecture == 'x86_64'
-    - ansible_os_family == 'Debian' and ansible_distribution_version | float >= 8
+    - ansible_distribution == 'Debian' and ansible_distribution_version | float >= 8
     - ansible_pkg_mgr == "apt"
 
 - name: install packages
