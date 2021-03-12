@@ -1,16 +1,15 @@
 ---
 - name: update repo-cache for Debian/Ubuntu
   become: true
-  apt:
+  ansible.builtin.apt:
     update_cache: true
     cache_valid_time: 3600
   when:
-    ansible_os_family == 'Debian'
-
+    - ansible_pkg_mgr == "apt"
 
 - name: Install requirements to add packages
   become: true
-  apt:
+  ansible.builtin.apt:
     package:
       - debian-goodies
       - apt-dater-host
@@ -19,8 +18,8 @@
 
 - name: add eth zurich apt (main)
   become: true
-  apt_repository:
-    repo: deb https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main
+  ansible.builtin.apt_repository:
+    repo: "deb https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main"
     state: present
     mode: 0644
   when:
@@ -29,8 +28,8 @@
 
 - name: add eth zurich apt (main non-free)
   become: true
-  apt_repository:
-    repo: deb-src https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main non-free
+  ansible.builtin.apt_repository:
+    repo: "deb-src https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main non-free"
     state: present
     mode: 0644
   when:
@@ -39,8 +38,8 @@
 
 - name: add eth zurich apt (main contrib non-free)
   become: true
-  apt_repository:
-    repo: deb-src https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main contrib non-free
+  ansible.builtin.apt_repository:
+    repo: "deb-src https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main contrib non-free"
     state: present
     mode: 0644
   when:

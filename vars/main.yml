@@ -61,5 +61,5 @@ base__linux_packages:
   - bzip2
   - jq
 
-playbook_version_number: 9007
+playbook_version_number: 9008
 playbook_version_path: 'base-packages_roles-ansible_github.version'

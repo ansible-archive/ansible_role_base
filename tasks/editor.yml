@@ -1,7 +1,7 @@
 ---
 - name: vim is our editor
   become: true
-  alternatives:
+  community.general.alternatives:
     name: editor
     path: /usr/bin/vim.basic
   when:
@@ -13,7 +13,7 @@
 
 - name: vim is our editor
   become: true
-  alternatives:
+  community.general.alternatives:
     name: editor
     path: /usr/bin/vim
   when:

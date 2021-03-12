@@ -1,7 +1,7 @@
 ---
 - name: Create directory for versionscheck
   become: true
-  file:
+  ansible.builtin.file:
     path: '/etc/.ansible-version'
     state: directory
     mode: 0755
@@ -9,7 +9,7 @@
 
 - name: check playbook version
   become: true
-  slurp:
+  ansible.builtin.slurp:
     src: "/etc/.ansible-version/{{ playbook_version_path }}"
   register: playbook_version
   when: submodules_versioncheck|bool
@@ -17,29 +17,29 @@
   failed_when: false
 
 - name: Print remote role version
-  debug:
+  ansible.builtin.debug:
     msg: "Remote role version: {{ playbook_version.content | default('Y3VycmVudGx5IG5vdCBkZXBsb3llZAo=') | b64decode | string }}"
   when: submodules_versioncheck|bool
 
 - name: Print locale role version
-  debug:
+  ansible.builtin.debug:
     msg: "Local role version: '{{ playbook_version_number|string }}'."
   when: submodules_versioncheck|bool
 
 - name: Check if your version is outdated
-  fail:
+  ansible.builtin.fail:
     msg: "Your ansible module has the version '{{ playbook_version_number }}' and is outdated. You need to update it!"
   when:
     - playbook_version.content|default("Mgo=")|b64decode|int - 1 >= playbook_version_number|int and submodules_versioncheck|bool
 
 - name: check if '/etc/ansible-version/' is empty
-  find:
+  ansible.builtin.find:
     paths: '/etc/ansible-version/'
   register: filesFound
 
 - name: write new version to remote disk
   become: true
-  copy:
+  ansible.builtin.copy:
     content: "{{ playbook_version_number }}"
     dest: "/etc/.ansible-version/{{ playbook_version_path }}"
     mode: '0644'

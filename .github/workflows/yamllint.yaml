@@ -2,7 +2,13 @@
 name: 'Yamllint GitHub Actions'
 
 # yamllint disable-line rule:truthy
-on: [push, pull_request]
+on:
+  push:
+    branches: '*'
+  pull_request:
+    branches: '*'
+  schedule:
+    - cron: '23 6 * */1 *'
 
 jobs:
   yamllint:
@@ -16,7 +22,3 @@ jobs:
         with:
           yamllint_file_or_dir: '.'
           yamllint_config_filepath: './.yamllint'
-          yamllint_strict: false
-          yamllint_comment: true
-#       env:
-#         GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }

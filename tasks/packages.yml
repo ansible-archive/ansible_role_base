@@ -1,28 +1,28 @@
 ---
 - name: update repo-cache for debian/ubuntu
   become: true
-  apt:
+  ansible.builtin.apt:
     update_cache: true
     cache_valid_time: 3600
   when:
-    ansible_os_family == 'Debian'
+    - ansible_pkg_mgr == "apt"
 
 - name: update repo-cache for debian/ubuntu
   become: true
-  dnf:
+  ansible.builtin.dnf:
     update_cache: true
   when:
     - ansible_os_family == 'RedHat' and ansible_distribution_version | float >= 8
 
 - name: install base packages for all operating systems
   become: true
-  package:
+  ansible.builtin.package:
     name: "{{ base__packages }}"
     state: "{{ base__package_state }}"
 
 - name: install python3 for all non-legacy systems
   become: true
-  package:
+  ansible.builtin.package:
     name: "{{ base__python3_packages }}"
     state: "{{ base__package_state }}"
   when: |
@@ -32,14 +32,14 @@
 
 - name: install python for systems where python3 packages are renamed to python
   become: true
-  package:
+  ansible.builtin.package:
     name: "{{ base__python_packages }}"
     state: "{{ base__package_state }}"
   when: ansible_os_family == 'Archlinux'
 
 - name: install packages for all non-legacy systems
   become: true
-  package:
+  ansible.builtin.package:
     name: "{{ base__modern_packages }}"
     state: "{{ base__package_state }}"
   when: |
@@ -50,7 +50,7 @@
 
 - name: install packages for all non-legacy Debian/Ububntu systems
   become: true
-  package:
+  ansible.builtin.package:
     name: "{{ base__debian_packages }}"
     state: "{{ base__package_state }}"
   when: |
@@ -59,7 +59,7 @@
 
 - name: install packages for all reasonable non-legacy systems
   become: true
-  package:
+  ansible.builtin.package:
     name: "{{ base__linux_packages }}"
     state: "{{ base__package_state }}"
   when: |
@@ -70,7 +70,7 @@
 
 - name: install mailx on debian
   become: true
-  package:
+  ansible.builtin.package:
     name:
       - bsd-mailx
     state: "{{ base__package_state }}"

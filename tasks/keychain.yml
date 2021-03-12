@@ -1,7 +1,14 @@
 ---
+- name: Update apt cache
+  ansible.builtin.apt:
+    cache_valid_time: 3600
+    update_cache: true
+  when:
+    - ansible_pkg_mgr == "apt"
+
 - name: install keychain to support ssh agent
   become: true
-  package:
+  ansible.builtin.package:
     name: keychain
     state: "{{ base__package_state }}"
   when:
@@ -9,7 +16,7 @@
 
 - name: install keychain on centos
   become: true
-  yum:
+  ansible.builtin.yum:
     name:
       - "{{ _base__keychain_rpm }}"
       - libselinux-python

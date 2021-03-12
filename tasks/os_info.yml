@@ -1,6 +1,6 @@
 ---
 - name: Print OS Infos
-  debug:
+  ansible.builtin.debug:
     msg: |
       ansible_os_family = '{{ ansible_os_family }}'
       ansible_distribution = '{{ ansible_distribution }}'

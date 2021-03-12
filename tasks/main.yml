@@ -1,28 +1,35 @@
 ---
-- include_tasks: os_info.yml
+- name: optional print os infos
+  ansible.builtin.include_tasks: os_info.yml
   when: print_os_vars | bool
 
-- include_tasks: versioncheck.yml
+- name: optional versionscheck
+  ansible.builtin.include_tasks: versioncheck.yml
   when: submodules_versioncheck | bool
 
-- include_tasks: sources.yml
+- name: optional add apt sources
+  ansible.builtin.include_tasks: sources.yml
   when:
     - base__add_ethz | bool
     - ansible_architecture == 'x86_64'
-    - ansible_distribution == 'Debian' and ansible_distribution_version | float >= 8
+    - ansible_os_family == 'Debian' and ansible_distribution_version | float >= 8
+    - ansible_pkg_mgr == "apt"
 
-- include_tasks: packages.yml
+- name: install packages
+  ansible.builtin.include_tasks: packages.yml
 
 - name: Upgrade all packages to latest
   become: true
-  package:
+  ansible.builtin.package:
     name: "*"
     state: "{{ base__package_state }}"
   when:
     - base__upgrade_packages_to_latest_version|bool
 
-- include_tasks: editor.yml
+- name: optional configure editor
+  ansible.builtin.include_tasks: editor.yml
   when: base__install_vim | bool
 
-- include_tasks: keychain.yml
+- name: optional install keychain
+  ansible.builtin.include_tasks: keychain.yml
   when: base__install_keychain | bool
