@@ -4,7 +4,7 @@ galaxy_info:
   description: Ansible role to install some base packages and make some base configuration on all common linux systems
   role_name: base
   license: MIT
-  min_ansible_version: 2.8
+  min_ansible_version: 2.11
   github_branch: master
   platforms:
     - name: Archlinux
