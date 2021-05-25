@@ -33,3 +33,9 @@
 - name: optional install keychain
   ansible.builtin.include_tasks: keychain.yml
   when: base__install_keychain | bool
+
+- name: install optional packages
+  become: true
+  ansible.builtin.package:
+    name: "{{ base__extra_packages }}"
+    state: present
