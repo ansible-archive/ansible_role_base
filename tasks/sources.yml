@@ -29,7 +29,7 @@
 - name: add eth zurich apt (main non-free)
   become: true
   ansible.builtin.apt_repository:
-    repo: "deb-src https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main non-free"
+    repo: "deb https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main non-free"
     state: present
     mode: 0644
   when:
@@ -39,7 +39,7 @@
 - name: add eth zurich apt (main contrib non-free)
   become: true
   ansible.builtin.apt_repository:
-    repo: "deb-src https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main contrib non-free"
+    repo: "deb https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main contrib non-free"
     state: present
     mode: 0644
   when:
