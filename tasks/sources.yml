@@ -7,7 +7,7 @@
   when:
     - ansible_pkg_mgr == "apt"
 
-- name: Install requirements to add packages
+- name: Install requirements to add packages via https
   become: true
   ansible.builtin.apt:
     package:
@@ -18,30 +18,13 @@
 
 - name: add eth zurich apt (main)
   become: true
-  ansible.builtin.apt_repository:
-    repo: "deb https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main"
-    state: present
+  ansible.builtin.template:
+    src: "templates/apt.sources.list.j2"
+    dest: '/etc/apt/sources.list.d/debian_ethz_ch_debian.list'
     mode: 0644
-  when:
-    - not base__pkg_non_free_firmware | bool
-    - not base__pkg_contrib | bool
+    group: root
+    owner: root
+  notify: apt update
 
-- name: add eth zurich apt (main non-free)
-  become: true
-  ansible.builtin.apt_repository:
-    repo: "deb-src https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main non-free"
-    state: present
-    mode: 0644
-  when:
-    - base__pkg_non_free_firmware | bool
-    - not base__pkg_contrib | bool
-
-- name: add eth zurich apt (main contrib non-free)
-  become: true
-  ansible.builtin.apt_repository:
-    repo: "deb-src https://debian.ethz.ch/debian/ {{ ansible_distribution_release }} main contrib non-free"
-    state: present
-    mode: 0644
-  when:
-    - base__pkg_non_free_firmware | bool
-    - base__pkg_contrib | bool
+- name: force all notified handlers to run at this point, not waiting for normal sync points
+  ansible.builtin.meta: flush_handlers
