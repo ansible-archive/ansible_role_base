@@ -25,9 +25,14 @@ base__extra_packages: []
 base__add_ethz: true
 
 # add nonfree/firmware packages?
-base__pkg_non_free_firmware: false
-base__pkg_contrib: false
+base__pkg_non_free_firmware: true
+base__pkg_contrib: true
+
+# add security repo
 base__pkg_security: true
+
+# add Debian Volatile
+base__pkg_updates: true
 
 # optionaly print some OS vars
 base__print_os_vars: false

@@ -1,6 +1,5 @@
 # Debian mirror der ETH Zürich
 # https://debian.ethz.ch/
-# https://wiki.debianforum.de/Sources.list
 
 # HTTPS mirror:
 deb https://debian.ethz.ch/debian {{ ansible_distribution_release }} main
@@ -22,7 +21,7 @@ deb-src https://debian.ethz.ch/debian {{ ansible_distribution_release }} main
 
 {%- if base__pkg_security | bool -%}
 # Inofficial Security Mirror
-deb https://security.debian.ethz.ch/ {{ ansible_distribution_release }}-security main
+deb https://security.debian.ethz.ch/ {{ ansible_distribution_release }}/updates main
   {%- if base__pkg_contrib | bool -%}
     {{- ' contrib' -}}
   {%- endif -%}
@@ -30,26 +29,7 @@ deb https://security.debian.ethz.ch/ {{ ansible_distribution_release }}-security
     {{- ' non-free' -}}
   {%- endif -%}
   {{- '\n' -}}
-deb-src https://security.debian.ethz.ch/ {{ ansible_distribution_release }}-security main
-  {%- if base__pkg_contrib | bool -%}
-    {{- ' contrib' -}}
-  {%- endif -%}
-  {%- if base__pkg_non_free_firmware | bool -%}
-    {{- ' non-free' -}}
-  {%- endif -%}
-  {{- '\n\n' -}}
-{%- endif -%}
-
-{%- if base__pkg_updates -%}
-deb http://deb.debian.org/debian stable-updates main
-  {%- if base__pkg_contrib | bool -%}
-    {{- ' contrib' -}}
-  {%- endif -%}
-  {%- if base__pkg_non_free_firmware | bool -%}
-    {{- ' non-free' -}}
-  {%- endif -%}
-  {{- '\n' -}}
-deb-src http://deb.debian.org/debian {{ ansible_distribution_release }}-updates main
+deb http://security.debian.org/ {{ ansible_distribution_release }}/updates main
   {%- if base__pkg_contrib | bool -%}
     {{- ' contrib' -}}
   {%- endif -%}
