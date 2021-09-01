@@ -16,7 +16,7 @@
       - apt-transport-https
     state: present
 
-- name: add eth zurich apt (main)
+- name: add eth zurich apt for Debian > 10
   become: true
   ansible.builtin.template:
     src: "templates/apt.sources.list.j2"
@@ -25,6 +25,18 @@
     group: root
     owner: root
   notify: apt update
+  when: ansible_distribution_major_version > '10'
+
+- name: add eth zurich apt for Debian < 11
+  become: true
+  ansible.builtin.template:
+    src: "templates/apt.sources.list_legacy.j2"
+    dest: '/etc/apt/sources.list.d/debian_ethz_ch_debian.list'
+    mode: 0644
+    group: root
+    owner: root
+  notify: apt update
+  when: ansible_distribution_major_version < '11'
 
 - name: force all notified handlers to run at this point, not waiting for normal sync points
   ansible.builtin.meta: flush_handlers
