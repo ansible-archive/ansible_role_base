@@ -21,7 +21,7 @@ deb-src https://debian.ethz.ch/debian {{ ansible_distribution_release }} main
   {{- '\n\n' -}}
 
 {%- if base__pkg_security | bool -%}
-# Inofficial Security Mirror
+# Inofficial Debian Security Mirror
 deb https://security.debian.ethz.ch/ {{ ansible_distribution_release }}-security main
   {%- if base__pkg_contrib | bool -%}
     {{- ' contrib' -}}
@@ -41,7 +41,8 @@ deb-src https://security.debian.ethz.ch/ {{ ansible_distribution_release }}-secu
 {%- endif -%}
 
 {%- if base__pkg_updates -%}
-deb https://debian.ethz.ch/debian stable-updates main
+# {{ ansible_distribution_release }}-updates, previously known as 'volatile'
+deb https://debian.ethz.ch/debian {{ ansible_distribution_release }}-updates main
   {%- if base__pkg_contrib | bool -%}
     {{- ' contrib' -}}
   {%- endif -%}
