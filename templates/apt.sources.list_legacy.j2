@@ -29,7 +29,7 @@ deb https://security.debian.ethz.ch/ {{ ansible_distribution_release }}/updates 
     {{- ' non-free' -}}
   {%- endif -%}
   {{- '\n' -}}
-deb http://security.debian.org/ {{ ansible_distribution_release }}/updates main
+deb-src https://security.debian.ethz.ch/ {{ ansible_distribution_release }}/updates main
   {%- if base__pkg_contrib | bool -%}
     {{- ' contrib' -}}
   {%- endif -%}

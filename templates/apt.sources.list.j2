@@ -41,7 +41,7 @@ deb-src https://security.debian.ethz.ch/ {{ ansible_distribution_release }}-secu
 {%- endif -%}
 
 {%- if base__pkg_updates -%}
-deb http://deb.debian.org/debian stable-updates main
+deb https://debian.ethz.ch/debian stable-updates main
   {%- if base__pkg_contrib | bool -%}
     {{- ' contrib' -}}
   {%- endif -%}
@@ -49,7 +49,7 @@ deb http://deb.debian.org/debian stable-updates main
     {{- ' non-free' -}}
   {%- endif -%}
   {{- '\n' -}}
-deb-src http://deb.debian.org/debian {{ ansible_distribution_release }}-updates main
+deb-src https://debian.ethz.ch/debian {{ ansible_distribution_release }}-updates main
   {%- if base__pkg_contrib | bool -%}
     {{- ' contrib' -}}
   {%- endif -%}

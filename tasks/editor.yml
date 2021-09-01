@@ -5,7 +5,7 @@
     name: editor
     path: /usr/bin/vim.basic
   when:
-    - editor_is_vim | bool
+    - base__install_vim | bool
     - ansible_distribution != 'CentOS'
     - ansible_distribution != 'RedHat'
     - ansible_distribution != 'Archlinux'
@@ -17,7 +17,7 @@
     name: editor
     path: /usr/bin/vim
   when:
-    - editor_is_vim | bool
+    - base__install_vim | bool
     - ansible_distribution == 'CentOS'
     - ansible_distribution == 'RedHat'
     - ansible_distribution == 'Archlinux'

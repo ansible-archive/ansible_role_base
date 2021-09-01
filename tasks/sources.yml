@@ -25,7 +25,7 @@
     group: root
     owner: root
   notify: apt update
-  when: ansible_distribution_major_version < '11'
+  when: ansible_distribution_major_version > '10'
 
 - name: add eth zurich apt for Debian < 11
   become: true
