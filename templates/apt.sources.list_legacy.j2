@@ -39,6 +39,26 @@ deb-src https://security.debian.ethz.ch/ {{ ansible_distribution_release }}/upda
   {{- '\n\n' -}}
 {%- endif -%}
 
+{%- if base__pkg_updates -%}
+# {{ ansible_distribution_release }}-updates, previously known as 'volatile'
+deb https://debian.ethz.ch/debian {{ ansible_distribution_release }}-updates main
+  {%- if base__pkg_contrib | bool -%}
+    {{- ' contrib' -}}
+  {%- endif -%}
+  {%- if base__pkg_non_free_firmware | bool -%}
+    {{- ' non-free' -}}
+  {%- endif -%}
+  {{- '\n' -}}
+deb-src https://debian.ethz.ch/debian {{ ansible_distribution_release }}-updates main
+  {%- if base__pkg_contrib | bool -%}
+    {{- ' contrib' -}}
+  {%- endif -%}
+  {%- if base__pkg_non_free_firmware | bool -%}
+    {{- ' non-free' -}}
+  {%- endif -%}
+  {{- '\n\n' -}}
+{%- endif -%}
+
 # Contact for proplems with the mirror:
 # https://readme.phys.ethz.ch/services/contact/
 # Or #isgphys on irc.phys.ethz.ch
