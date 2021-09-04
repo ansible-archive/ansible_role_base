@@ -14,6 +14,7 @@ base__packages:
   - net-tools
   - gdisk
   - lsof
+  - pwgen
 
 # packages for all non-legacy x86 systems
 base__modern_packages:
@@ -61,5 +62,5 @@ base__linux_packages:
   - bzip2
   - jq
 
-playbook_version_number: 9016
+playbook_version_number: 9017
 playbook_version_path: 'base-packages_roles-ansible_github.version'
