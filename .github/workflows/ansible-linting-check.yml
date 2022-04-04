@@ -17,10 +17,6 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Lint Ansible Playbook
-        uses: ansible/ansible-lint-action@master
+        uses: ansible/ansible-lint-action@v6
         with:
           targets: "."
-          # [required]
-          # Paths to ansible files (i.e., playbooks, tasks, handlers etc..)
-          args: ""
-          # [optional]

@@ -9,6 +9,7 @@ base__add_ethz: true
 # add nonfree/firmware packages?
 base__pkg_non_free_firmware: true
 base__pkg_contrib: true
+base__pkg_backports: false
 
 # add security repo
 base__pkg_security: true

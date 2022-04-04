@@ -60,6 +60,26 @@ deb-src https://debian.ethz.ch/debian {{ ansible_distribution_release }}-updates
   {{- '\n\n' -}}
 {%- endif -%}
 
+{%- if base__pkg_backports -%}
+# {{ ansible_distribution_release }}-backports
+deb https://debian.ethz.ch/debian {{ ansible_distribution_release }}-backports main
+  {%- if base__pkg_contrib | bool -%}
+    {{- ' contrib' -}}
+  {%- endif -%}
+  {%- if base__pkg_non_free_firmware | bool -%}
+    {{- ' non-free' -}}
+  {%- endif -%}
+  {{- '\n' -}}
+deb-src https://debian.ethz.ch/debian {{ ansible_distribution_release }}-backports main
+  {%- if base__pkg_contrib | bool -%}
+    {{- ' contrib' -}}
+  {%- endif -%}
+  {%- if base__pkg_non_free_firmware | bool -%}
+    {{- ' non-free' -}}
+  {%- endif -%}
+  {{- '\n\n' -}}
+{%- endif -%}
+
 # Contact for proplems with the mirror:
 # https://readme.phys.ethz.ch/services/contact/
 # Or #isgphys on irc.phys.ethz.ch
