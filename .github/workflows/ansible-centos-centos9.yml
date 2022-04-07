@@ -1,5 +1,5 @@
 ---
-name: Ansible check ubuntu:bionic
+name: Ansible check centos:stream9
 
 # yamllint disable-line rule:truthy
 on: [push, pull_request]
@@ -12,7 +12,7 @@ jobs:
       - name: 'checkout git repo'
         uses: actions/checkout@v3
 
-      - name: 'ansible check with ubuntu:bionic'
-        uses: roles-ansible/check-ansible-ubuntu-bionic-action@master
+      - name: 'ansible check with quay.io/centos/centos:stream9'
+        uses: roles-ansible/check-ansible-centos-centos9-action@main
         with:
           targets: "./"
