@@ -6,13 +6,13 @@ on: [push, pull_request]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: 'checkout git repo'
+        uses: actions/checkout@v3
 
-      - name: ansible check with ubuntu:centos8
+      - name: 'ansible check with ubuntu:centos8'
         uses: roles-ansible/check-ansible-centos-centos8-action@master
         with:
           targets: "./"
