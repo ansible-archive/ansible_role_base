@@ -1,0 +1,18 @@
+---
+name: Ansible check centos:stream9
+
+# yamllint disable-line rule:truthy
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'checkout git repo'
+        uses: actions/checkout@v3
+
+      - name: 'ansible check with quay.io/centos/centos:stream9'
+        uses: roles-ansible/check-ansible-centos-centos9-action@main
+        with:
+          targets: "./"
