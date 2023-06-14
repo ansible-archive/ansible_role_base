@@ -1,25 +1,26 @@
 ---
 galaxy_info:
-  author: do1jlr
+  author: l3d
   description: Ansible role to install some base packages and make some base configuration on all common linux systems
   role_name: base
   license: MIT
-  min_ansible_version: 2.11
-  github_branch: master
+  min_ansible_version: "2.11"
   platforms:
-    - name: Archlinux
-      versions: all
+    - name: ArchLinux
+      versions: ['all']
     - name: Debian
-      versions: all
+      versions: ['all']
     - name: Ubuntu
-      versions: all
+      versions: ['all']
     - name: Fedora
-      versions: all
+      versions: ['all']
     - name: EL
-      versions: all
+      versions: ['all']
   galaxy_tags:
     - base
     - packages
     - default
+    - apt
+    - sources
     - linux
 dependencies: []

@@ -1,5 +1,5 @@
 ---
-- name: update repo-cache for Debian/Ubuntu
+- name: Update repo-cache for Debian/Ubuntu
   become: true
   ansible.builtin.apt:
     update_cache: true
@@ -16,7 +16,7 @@
       - apt-transport-https
     state: present
 
-- name: add eth zurich apt for Debian > 10
+- name: Add eth zurich apt for Debian Bullaeye (11) and later
   become: true
   ansible.builtin.template:
     src: "templates/apt.sources.list.j2"
@@ -24,10 +24,10 @@
     mode: 0644
     group: root
     owner: root
-  notify: apt update
+  notify: Run apt update
   when: ansible_distribution_major_version > '10'
 
-- name: add eth zurich apt for Debian < 11
+- name: Add eth zurich apt for Debian Buster (10) and earlyer
   become: true
   ansible.builtin.template:
     src: "templates/apt.sources.list_legacy.j2"
@@ -35,8 +35,8 @@
     mode: 0644
     group: root
     owner: root
-  notify: apt update
+  notify: Run apt update
   when: ansible_distribution_major_version < '11'
 
-- name: force all notified handlers to run at this point, not waiting for normal sync points
+- name: Force all notified handlers to run at this point, not waiting for normal sync points
   ansible.builtin.meta: flush_handlers
