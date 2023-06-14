@@ -9,6 +9,9 @@ deb https://debian.ethz.ch/debian {{ ansible_distribution_release }} main
   {%- endif -%}
   {%- if base__pkg_non_free_firmware | bool -%}
     {{- ' non-free' -}}
+    {%- if ansible_distribution_major_version >= '12' -%}
+      {{- ' non-free-firmware' -}}
+    {%- endif -%}
   {%- endif -%}
   {{- '\n' -}}
 deb-src https://debian.ethz.ch/debian {{ ansible_distribution_release }} main
@@ -17,6 +20,9 @@ deb-src https://debian.ethz.ch/debian {{ ansible_distribution_release }} main
   {%- endif -%}
   {%- if base__pkg_non_free_firmware | bool -%}
     {{- ' non-free' -}}
+    {%- if ansible_distribution_major_version >= '12' -%}
+      {{- ' non-free-firmware' -}}
+    {%- endif -%}
   {%- endif -%}
   {{- '\n\n' -}}
 
@@ -28,6 +34,9 @@ deb https://security.debian.ethz.ch/ {{ ansible_distribution_release }}-security
   {%- endif -%}
   {%- if base__pkg_non_free_firmware | bool -%}
     {{- ' non-free' -}}
+    {%- if ansible_distribution_major_version >= '12' -%}
+      {{- ' non-free-firmware' -}}
+    {%- endif -%}
   {%- endif -%}
   {{- '\n' -}}
 deb-src https://security.debian.ethz.ch/ {{ ansible_distribution_release }}-security main
@@ -36,6 +45,9 @@ deb-src https://security.debian.ethz.ch/ {{ ansible_distribution_release }}-secu
   {%- endif -%}
   {%- if base__pkg_non_free_firmware | bool -%}
     {{- ' non-free' -}}
+    {%- if ansible_distribution_major_version >= '12' -%}
+      {{- ' non-free-firmware' -}}
+    {%- endif -%}
   {%- endif -%}
   {{- '\n\n' -}}
 {%- endif -%}
@@ -48,6 +60,9 @@ deb https://debian.ethz.ch/debian {{ ansible_distribution_release }}-updates mai
   {%- endif -%}
   {%- if base__pkg_non_free_firmware | bool -%}
     {{- ' non-free' -}}
+    {%- if ansible_distribution_major_version >= '12' -%}
+      {{- ' non-free-firmware' -}}
+    {%- endif -%}
   {%- endif -%}
   {{- '\n' -}}
 deb-src https://debian.ethz.ch/debian {{ ansible_distribution_release }}-updates main
@@ -56,6 +71,9 @@ deb-src https://debian.ethz.ch/debian {{ ansible_distribution_release }}-updates
   {%- endif -%}
   {%- if base__pkg_non_free_firmware | bool -%}
     {{- ' non-free' -}}
+    {%- if ansible_distribution_major_version >= '12' -%}
+      {{- ' non-free-firmware' -}}
+    {%- endif -%}
   {%- endif -%}
   {{- '\n\n' -}}
 {%- endif -%}
@@ -68,6 +86,9 @@ deb https://debian.ethz.ch/debian {{ ansible_distribution_release }}-backports m
   {%- endif -%}
   {%- if base__pkg_non_free_firmware | bool -%}
     {{- ' non-free' -}}
+    {%- if ansible_distribution_major_version >= '12' -%}
+      {{- ' non-free-firmware' -}}
+    {%- endif -%}
   {%- endif -%}
   {{- '\n' -}}
 deb-src https://debian.ethz.ch/debian {{ ansible_distribution_release }}-backports main
@@ -76,6 +97,9 @@ deb-src https://debian.ethz.ch/debian {{ ansible_distribution_release }}-backpor
   {%- endif -%}
   {%- if base__pkg_non_free_firmware | bool -%}
     {{- ' non-free' -}}
+    {%- if ansible_distribution_major_version >= '12' -%}
+      {{- ' non-free-firmware' -}}
+    {%- endif -%}
   {%- endif -%}
   {{- '\n\n' -}}
 {%- endif -%}

@@ -1,5 +1,5 @@
 ---
-- name: update repo-cache for debian/ubuntu
+- name: Update repo-cache for debian/ubuntu
   become: true
   ansible.builtin.apt:
     update_cache: true
@@ -7,20 +7,20 @@
   when:
     - ansible_pkg_mgr == "apt"
 
-- name: update repo-cache for debian/ubuntu
+- name: Update repo-cache for debian/ubuntu
   become: true
   ansible.builtin.dnf:
     update_cache: true
   when:
     - ansible_os_family == 'RedHat' and ansible_distribution_version | float >= 8
 
-- name: install base packages for all operating systems
+- name: Install base packages for all operating systems
   become: true
   ansible.builtin.package:
     name: "{{ base__packages }}"
     state: "{{ base__package_state }}"
 
-- name: install python3 for all non-legacy systems
+- name: Install python3 for all non-legacy systems
   become: true
   ansible.builtin.package:
     name: "{{ base__python3_packages }}"
@@ -30,14 +30,14 @@
     ansible_os_family == 'RedHat' and ansible_distribution_version | float >= 7 or
     ansible_distribution == 'Debian' and ansible_distribution_version | float >= 7
 
-- name: install python for systems where python3 packages are renamed to python
+- name: Install python for systems where python3 packages are renamed to python
   become: true
   ansible.builtin.package:
     name: "{{ base__python_packages }}"
     state: "{{ base__package_state }}"
   when: ansible_os_family == 'Archlinux'
 
-- name: install packages for all non-legacy systems
+- name: Install packages for all non-legacy systems
   become: true
   ansible.builtin.package:
     name: "{{ base__modern_packages }}"
@@ -48,7 +48,7 @@
     ansible_distribution == 'Debian' and ansible_distribution_version | float >= 8 or
     ansible_os_family == 'Archlinux'
 
-- name: install packages for all non-legacy Debian/Ububntu systems
+- name: Install packages for all non-legacy Debian/Ububntu systems
   become: true
   ansible.builtin.package:
     name: "{{ base__debian_packages }}"
@@ -57,7 +57,7 @@
     ansible_distribution == 'Ubuntu' and ansible_distribution_version | float >= 16.0 or
     ansible_distribution == 'Debian' and ansible_distribution_version | float >= 8
 
-- name: install packages for all reasonable non-legacy systems
+- name: Install packages for all reasonable non-legacy systems
   become: true
   ansible.builtin.package:
     name: "{{ base__linux_packages }}"
@@ -68,7 +68,7 @@
     ansible_distribution == 'Debian' and ansible_distribution_version | float >= 9 or
     ansible_os_family == 'Archlinux'
 
-- name: install mailx on debian
+- name: Install mailx on debian
   become: true
   ansible.builtin.package:
     name:

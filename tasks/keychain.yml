@@ -7,7 +7,7 @@
   when:
     - ansible_pkg_mgr == "apt"
 
-- name: install keychain to support ssh agent
+- name: Install keychain to support ssh agent
   become: true
   ansible.builtin.package:
     name: keychain
@@ -15,7 +15,7 @@
   when:
     - ansible_os_family != 'RedHat'
 
-- name: install keychain on centos
+- name: Install keychain on centos
   become: true
   ansible.builtin.yum:
     name:
