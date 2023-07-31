@@ -1,7 +1,7 @@
 ---
 galaxy_info:
-  author: l3d
-  description: Ansible role to install some base packages and make some base configuration on all common linux systems
+  author: do1jlr
+  description: old archived Ansible role that installed some base packages and made some base configuration on common linux systems
   role_name: base
   license: MIT
   min_ansible_version: "2.11"
